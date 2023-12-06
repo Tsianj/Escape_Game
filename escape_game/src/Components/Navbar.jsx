@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import LogoFcb from "../Assets/icons8-logo-facebook-50.png";
 import LogoInsta from "../Assets/icons8-logo-instagram-50.png";
 import MenuBurger from "../Assets/icons8-menu-64.png";
+import { Link } from "react-router-dom";
+import Connexion from "../Pages/Connexion";
 
 function NavBar() {
   const [isActive, setIsActive] = useState(false);
@@ -29,6 +31,27 @@ function NavBar() {
             setIsActive(!isActive);
           }}
         />
+        <Link to={"/connexion"}>
+          <button className="lien_nav">Connexion</button>
+        </Link>
+        <Link>
+          <button className="lien_nav">Profil</button>
+        </Link>
+        <hr />
+
+        <Link>
+          <button className="lien_nav">Nos Escapes</button>
+        </Link>
+        <Link>
+          <button className="lien_nav">Nos Escapes à domicile</button>
+        </Link>
+        <Link>
+          <button className="lien_nav">Mini-jeux</button>
+        </Link>
+        <Link to={"/reservation"}>
+          <button className="lien_nav">Réservation</button>
+        </Link>
+        <div className="icon-reseau"><a href="https://www.facebook.com" target="_blank">
           <img
             src={Logo}
             id="logo"
@@ -36,7 +59,6 @@ function NavBar() {
             alt="Logo"
             placeholder="Logo_escape_game"
           />
-
           <Link to={"/connexion"}>
             <button className="lien_nav">Connexion</button>
           </Link>
