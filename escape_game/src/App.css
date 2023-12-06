@@ -8,10 +8,9 @@
   font-family: "veteran_typewriter";
 }
 
-.App {
+.App{
   background-color: #22000e;
 }
-
 :root {
   --background-button: rgba(217, 217, 217, 0.5);
   --color-font: #fceeca;
