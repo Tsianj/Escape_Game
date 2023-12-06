@@ -1,8 +1,23 @@
 import React, { useState } from 'react';
 import '../Connexion.css';
+import utilisateurService from '../Services/utilisateurService';
 
 const Connexion = () => {
     const [isActive, setIsActive] = useState(false)
+    const [utilisateur, setUtilisateur] = useState({});
+    const handleChange = (event) => {
+        const {name, value} = event.currentTarget;
+        setUtilisateur({...utilisateur, [name] : value})
+    }
+    
+    const handleAdd = () => {
+        try{
+            const response = utilisateurService.addUtilisateur(utilisateur);
+        }catch (e){
+            console.log(e)
+        }
+        console.log(utilisateur)
+    }
 
 
     return <>
@@ -13,13 +28,13 @@ const Connexion = () => {
                 <form>
                     <h1>Nouveau Compte</h1>
                     {/* <!-- Champs pour entrer le nom, l'email et le mot de passe --> */}
-                    <input type="text" placeholder="Nom" required/>
-                    <input type="text" placeholder="Prénom" required/>
-                    <input type="email" placeholder="Adresse mail" required/>
-                    <input type="password" placeholder="Mot de passe" required/>
-                    <input type="text" placeholder="Adresse Postale" required/>
-                    <input type="number" placeholder="Numéro de téléphone" required/>
-                    <button>S'incrire</button>
+                    <input type="text" name='nom_uti' placeholder="Nom" value={utilisateur.nom_uti} onChange={handleChange} required/>
+                    <input type="text" name='prenom_uti' placeholder="Prénom" value={utilisateur.prenom_uti} onChange={handleChange} required/>
+                    <input type="email" name='mail_uti' placeholder="Adresse mail" value={utilisateur.mail_uti} onChange={handleChange} required/>
+                    <input type="password" name='passwords' placeholder="Mot de passe" value={utilisateur.passwords} onChange={handleChange} required/>
+                    <input type="text" name='adresse' placeholder="Adresse Postale" value={utilisateur.adresse} onChange={handleChange} required/>
+                    <input type="number" name='numero_tel' placeholder="Numéro de téléphone" value={utilisateur.numero_tel} onChange={handleChange} required/>
+                    <button onClick={handleAdd}>S'incrire</button>
                 </form>
             </div>
             {/* <!-- Formulaire de connexion --> */}
@@ -32,6 +47,7 @@ const Connexion = () => {
                     {/* <!-- Lien pour réinitialiser le mot de passe --> */}
                     <a href="#">Mot de passe oublié</a>
                     <button>Se connecter</button>
+
                 </form>
             </div>
             {/* <!-- Conteneur pour basculer entre les formulaires --> */}
