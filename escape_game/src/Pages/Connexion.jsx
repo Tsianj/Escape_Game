@@ -30,7 +30,7 @@ const Connexion = () => {
                     <input type="email" placeholder="Adresse mail" required/>
                     <input type="password" placeholder="Mot de passe" required/>
                     {/* <!-- Lien pour réinitialiser le mot de passe --> */}
-                    <a href="#">Forget Your Password</a>
+                    <a href="#">Mot de passe oublié</a>
                     <button>Se connecter</button>
                 </form>
             </div>

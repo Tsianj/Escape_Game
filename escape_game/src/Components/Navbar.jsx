@@ -2,6 +2,8 @@ import Logo from "../Assets/logo_escape.png";
 import {React, useContext} from "react";
 import LogoFcb from "../Assets/icons8-logo-facebook-50.png";
 import LogoInsta from "../Assets/icons8-logo-instagram-50.png";
+import { Link } from "react-router-dom";
+import Connexion from "../Pages/Connexion";
 
 function NavBar() {
 
@@ -14,27 +16,27 @@ function NavBar() {
           width={"120px"}
           placeholder="Logo_escape_game"
         />
-        <a href="#">
+        <Link to={"/connexion"}>
           <button className="lien_nav">Connexion</button>
-        </a>
-        <a href="#">
+        </Link>
+        <Link>
           <button className="lien_nav">Profil</button>
-        </a>
+        </Link>
         <hr />
 
-        <a href="#">
+        <Link>
           <button className="lien_nav">Nos Escapes</button>
-        </a>
-        <a href="#">
+        </Link>
+        <Link>
           <button className="lien_nav">Nos Escapes à domicile</button>
-        </a>
-        <a href="#">
+        </Link>
+        <Link>
           <button className="lien_nav">Mini-jeux</button>
-        </a>
-        <a href="#">
+        </Link>
+        <Link to={"/reservation"}>
           <button className="lien_nav">Réservation</button>
-        </a>
-        <div className="icon-reseau"><a href="https://www.facebook.com">
+        </Link>
+        <div className="icon-reseau"><a href="https://www.facebook.com" target="_blank">
           <img
             className="icon"
             src={LogoFcb}
@@ -43,7 +45,7 @@ function NavBar() {
             placeholder="Logo-facebook"
           />
         </a>
-        <a href="https://www.instagram.com">
+        <a href="https://www.instagram.com" target="_blank">
           <img
             className="icon"
             src={LogoInsta}
