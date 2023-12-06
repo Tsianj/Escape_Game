@@ -1,6 +1,5 @@
 const express = require("express");
-const conn = require("../services/database");
-const historiqueService = require("../services/historiqueService");
+const utilisateurService = require("../services/utilisateurService");
 const router = express.Router();
 
 /*Ce sont des routes pour des pages d'acceuil (de présentation) comme dans scolarité*/ 
@@ -13,6 +12,19 @@ router.get("/", (req, res) => {
         res.json({"message" : "Error" + err.sqlMessage})
     });
 });
+
+router.post("/", (req, res) => {
+    let data = req.body;
+    console.log(data);
+    utilisateurService.addUtilisateur(data).then((result) => {
+        res.status(201);
+        res.json(data);
+      })
+      .catch((err) => {
+        console.log(err);
+        res.send({ message: "Votre ajout ne s'est pas bien passé" });
+      });
+  });
 
 
 module.exports = router;

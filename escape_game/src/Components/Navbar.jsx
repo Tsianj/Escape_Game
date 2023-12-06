@@ -12,13 +12,7 @@ function NavBar() {
   return (
     <>
       <div className="navbar">
-        <img
-          src={Logo}
-          id="logo"
-          width={"120px"}
-          alt="Logo"
-          placeholder="Logo_escape_game"
-        />
+
         <img
           src={MenuBurger}
           alt="menu burger"
@@ -36,7 +30,14 @@ function NavBar() {
             onClick={() => {
               setIsActive(!isActive);
             }}
-          />
+          />        
+          <img
+          src={Logo}
+          id="logo"
+          width={"120px"}
+          alt="Logo"
+          placeholder="Logo_escape_game"
+        />
           <Link to={"/connexion"}>
             <button className="lien_nav">Connexion</button>
           </Link>
