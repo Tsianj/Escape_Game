@@ -5,14 +5,18 @@
 * {
   margin: 0;
   padding: 0;
-  background-color: #22000e;
   font-family: "veteran_typewriter";
+}
+body{
+  height: 100%;
+  width: 100%;
+  background-color: #22000e;
 }
 
 :root {
   --background-button: rgba(217, 217, 217, 0.5);
   --color-font: #fceeca;
-  --colors-secondaire: rgba(180, 36, 55, 0.6);
+  --colors-secondaire: #7a1427;
 }
 
 /* Navbar  */
@@ -20,40 +24,38 @@
 .navbar {
   background-color: var(--colors-secondaire);
   color: var(--color-font);
-  position: fixed;
-  height: 100%;
+  position: absolute;
+  height: 100vw;
   width: 180px;
   display: block;
-  align-items: center;
-  justify-content: center;
 }
 
 #logo {
   margin: 28px;
 }
 
-hr{
+hr {
   color: var(--color-font);
   margin: 15px;
   margin-bottom: 25px;
 }
 
-a{
+a {
   text-decoration: none;
   background-color: transparent;
 }
 
-a .lien_nav {
+.lien_nav {
   color: var(--color-font);
   background-color: var(--but-background-color);
   border-radius: 50px;
   width: 150px;
-  height: 40px;  background-color: var(--background-button);
+  height: 40px;
+  background-color: var(--background-button);
   margin-right: 15px;
-  margin-left: 15px;margin-bottom: 15px;
+  margin-left: 15px;
+  margin-bottom: 15px;
 }
-
-
 
 .icon-reseau {
   color: white;
@@ -68,7 +70,62 @@ a .lien_nav {
   margin: 15px;
   background-color: transparent;
 }
-body {
-  height: 100%;
-  width: 100%;
+
+.menu_burger {
+  display: none;
+  margin: 10px;
+  width: 40px;
+}
+#menu_burger2 {
+  display: none;
+  margin: 10px;
+  width: 40px;
+}
+
+/* Navbar responsive*/
+
+@media (max-width: 900px) {
+  .navbar {
+    padding: 0;
+    width: 100%;
+    height: 60px;
+    z-index: 150;
+  }
+
+  hr {
+    display: none;
+  }
+
+  .menu_burger {
+    display: block;
+    z-index: 150;
+  }
+
+  .nav-links {
+    top: 0;
+    left: 0;
+    position: absolute;
+    backdrop-filter: blur(3px);
+    background-color: rgba(122, 20, 39, 0.5);
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: -100%;
+    transition: all 0.5s ease;
+  }    
+  
+  .active {
+    margin-left: 0 !important;
+  }
+  
+  .active #menu_burger2 {
+    display: block;
+    align-self: flex-start;
+    z-index: 150;
+
+  }
+
+
 }
