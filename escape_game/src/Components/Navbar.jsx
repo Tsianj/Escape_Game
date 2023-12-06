@@ -1,48 +1,57 @@
 import Logo from "../Assets/logo_escape.png";
-import React from "react";
-import LogoFcb from "../Assets/logo-facebook.svg";
-import LogoInsta from "../Assets/logo-instagram.svg";
+import {React, useContext} from "react";
+import LogoFcb from "../Assets/icons8-logo-facebook-50.png";
+import LogoInsta from "../Assets/icons8-logo-instagram-50.png";
 
 function NavBar() {
+
   return (
     <>
       <div className="navbar">
         <img
           src={Logo}
-          id="Logo"
-          width={"100px"}
+          id="logo"
+          width={"120px"}
           placeholder="Logo_escape_game"
         />
-        <button className="lien_nav">
-          <a href="#">Connexion</a>
-        </button>
+        <a href="#">
+          <button className="lien_nav">Connexion</button>
+        </a>
+        <a href="#">
+          <button className="lien_nav">Profil</button>
+        </a>
         <hr />
-        <button className="lien_nav">
-          <a href="#">Nos Escapes</a>
-        </button>
-        <button className="lien_nav">
-          <a href="#">Nos Escapes à domicile</a>
-        </button>
-        <button className="lien_nav">
-          <a href="#">Mini-jeux</a>
-        </button>
-        <button className="lien_nav">
-          <a href="#">Réservation</a>
-        </button>
-        <img
-          className="icon"
-          src={LogoFcb}
-          id="logo_fcb"
-          width={"40px"}
-          placeholder="Logo-facebook"
-        />
-        <img
-          className="icon"
-          src={LogoInsta}
-          id="logo_insta"
-          width={"40px"}
-          placeholder="Logo-instagram"
-        />
+
+        <a href="#">
+          <button className="lien_nav">Nos Escapes</button>
+        </a>
+        <a href="#">
+          <button className="lien_nav">Nos Escapes à domicile</button>
+        </a>
+        <a href="#">
+          <button className="lien_nav">Mini-jeux</button>
+        </a>
+        <a href="#">
+          <button className="lien_nav">Réservation</button>
+        </a>
+        <div className="icon-reseau"><a href="https://www.facebook.com">
+          <img
+            className="icon"
+            src={LogoFcb}
+            id="logo_fcb"
+            width={"40px"}
+            placeholder="Logo-facebook"
+          />
+        </a>
+        <a href="https://www.instagram.com">
+          <img
+            className="icon"
+            src={LogoInsta}
+            id="logo_insta"
+            width={"40px"}
+            placeholder="Logo-instagram"
+          />
+        </a></div>
       </div>
     </>
   );

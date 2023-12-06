@@ -1,30 +1,71 @@
-*{
-  margin: 0;
-  padding: 0;
-  background-color: #22000E;
-  text-decoration: none;
+@font-face {
+  font-family: "veteran_typewriter";
+  src: url("veteran_typewriter.ttf") format("truetype");
 }
 
-:root{
-  --but: rgba(217, 217, 217, 0.5);
+* {
+  margin: 0;
+  padding: 0;
+  background-color: #22000e;
+  font-family: "veteran_typewriter";
+}
 
+:root {
+  --background-button: rgba(217, 217, 217, 0.5);
+  --color-font: #fceeca;
+  --colors-secondaire: rgba(180, 36, 55, 0.6);
 }
 
 /* Navbar  */
 
-.navbar{
-  background-color: rgba(180, 36, 55, 0.6);
-
+.navbar {
+  background-color: var(--colors-secondaire);
+  color: var(--color-font);
+  position: fixed;
+  height: 100%;
+  width: 180px;
+  display: block;
+  align-items: center;
+  justify-content: center;
 }
 
-.lien_nav{
-  background-color: rgba(217, 217, 217, 0.5);
-  background: var(--but);
+#logo {
+  margin: 28px;
+}
+
+hr{
+  color: var(--color-font);
+  margin: 15px;
+  margin-bottom: 25px;
+}
+
+a{
+  text-decoration: none;
+  background-color: transparent;
+}
+
+a .lien_nav {
+  color: var(--color-font);
+  background-color: var(--but-background-color);
   border-radius: 50px;
   width: 150px;
-  height: 40px;
+  height: 40px;  background-color: var(--background-button);
+  margin-right: 15px;
+  margin-left: 15px;margin-bottom: 15px;
 }
 
-.lien_nav a {
-  background: var(--but);
+
+
+.icon-reseau {
+  color: white;
+  align-items: center;
+  margin-right: 15px;
+  margin-left: 15px;
+  background-color: transparent;
+}
+
+.icon {
+  color: white;
+  margin: 15px;
+  background-color: transparent;
 }
