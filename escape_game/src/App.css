@@ -5,10 +5,11 @@
 * {
   margin: 0;
   padding: 0;
-  background-color: #22000e;
   font-family: "veteran_typewriter";
 }
-
+.App{
+  background-color: #22000e;
+}
 :root {
   --background-button: rgba(217, 217, 217, 0.5);
   --color-font: #fceeca;
