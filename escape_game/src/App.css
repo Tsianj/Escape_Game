@@ -1,0 +1,9 @@
+@font-face {
+  font-family: "veteran_typewriter";
+  src: url("veteran_typewriter.ttf") format("truetype");
+}
+body {
+  height: 100%;
+  width: 100%;
+}
+
