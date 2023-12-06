@@ -1,0 +1,83 @@
+Escape game salle/domicile
+syteme de réservation (formulaire et calendrier)
+Commentaire/avis/notation
+Point mardi 5 vers 16h
+
+
+
+Entreprise et particulier ??
+Event evjf/evdg/anniversaire ? 
+Enfant ? 
+Séparation Salle et dom?? 
+Combien d'escape vous proposez ? et temps de jeu?
+Horaire d'ouverture et jour ? Férié ?
+Tarif ?
+Capacité d'accueil Max?
+Capacité max a dom?
+Presta dom qu'est ce qu'elle contient ? 
+Contact ?
+Niveau de difficulté?
+Localisation ? Jusqu'ou pour le dom ?
+Chèque cadeau ? et moyen de paiement ? Possibilité d'annulation ? délais max ?
+Couleur du site ? Theme particulier ? Type de police du texte ? 
+Photo a fournir ? 
+La page d'accueil que désirez vous dessus? 
+réglementation ? 
+réseau associé ?
+Chose a mettre plus en avant que d'autre ? 
+Accessibilité ?
+
+
+Systeme d'admin pour ajoute et modifie de thème.
+Systeme de connexion des clients.
+nav bar sur le côté 
+Footer avec réseaux
+REACT et Node (sous forme d'API)
+
+Quels services offrez-vous à la fois pour les entreprises et les particuliers ? Particulier uniquement 8 max personnes.
+
+Comment votre entreprise s'adapte-t-elle pour des événements tels que les EVJF, les EVDG ou les anniversaires ? Oui Possible escape game personnalisé pour ces évents.
+Au niveau de la résa un option personnalité avec une description de ce que le client veut. avec Contact du client. Pas de limit de tème. uniquement à domicile.
+
+Quelles sont les activités spécifiquement conçues pour divertir les enfants ? Rien de prévu 
+
+Quelles différences proposez-vous entre la location de salles pour des événements et les expériences à domicile ? Deux sections différentes. Sur site exclus. ET ceux a dom aussi
+
+Combien d'escape games proposez-vous actuellement et quelle est la durée typique d'une session ?
+Sur site 3 salles 3 tème avec Niveau difficulté adaptable. ça dépend de la difficulté et du tème max 1h30
+Dom 2 ou 3 tème. Possibilité d'ajouter des tème. 1h30 max. Préciser présence de la presta 3h pour l'installation
+
+Quels sont vos horaires d'ouverture habituels et quels jours de fermeture avez-vous pour les jours fériés ? du Mardi au dimanche 9h-12h 14h-minuit/ Jour férié ouvert
+
+Pourriez-vous nous fournir des détails sur les tarifs ? Comment varient-ils en fonction du nombre de participants ou du type d'événement ? 
+Location de la salle, 2 ou 8 le prix reste fixe 100€ pour chaque salle. Mini 2 pour les réservations
+Pour le dom prix double 200€
+
+Quelle est la capacité maximale d'accueil pour vos installations ? 8 
+
+Quelle est la capacité maximale pour vos services à domicile ? 10 pour event particulier pour s'adapter
+
+En quoi consiste exactement la prestation à domicile que vous proposez ? 
+
+Comment peut-on vous contacter pour des informations supplémentaires ou pour réserver ? formulaire de contact / numéro de tel / réseau sociaux FB insta
+Quel est le niveau de difficulté des activités que vous proposez ? adaptatif selon le choix des clients FAcile intermédiaire et difficile
+
+Où êtes-vous situés et jusqu'où vous déplacez-vous pour vos services à domicile ? 40km max Situer a Lille
+
+Offrez-vous des chèques cadeaux et quels sont les moyens de paiement acceptés ? Y a-t-il des possibilités d'annulation et quels sont les délais pour cela ? CB et liquide uniquement/ pas de carte cadeau / Possible d'annuler 24h avant Pas de remboursement si après 24h
+
+Comment est structuré votre site web ? Y a-t-il un thème ou des couleurs particulières qui le caractérisent ? Quel type de police utilisez-vous pour le texte ? Logo pas encore présent
+Enignes Evadés - L'univers des escapes games (slogan)/ Rouge un peu sombre (fort vers le bordeaux) qui domine/ pas de changemet dark mode/ Pas de police particulière 
+
+Avez-vous besoin de photos spécifiques pour vos services ? Oui dois les transmettres + descriptif 
+
+Quels éléments spécifiques souhaiteriez-vous présenter en page d'accueil de votre site web ? Petit présentation, puis présentation des escape avec un hover descriptif. Quand clic dessus va sur le détails de l'escape et la peut faire la réservation. Mail de confirmation pour la réservation 
+
+Quelles sont les réglementations spécifiques à votre entreprise ? Pas de sécurité particulière (savoir être des clients)
+
+Êtes-vous associé à un réseau ou une organisation particulière ? Oui FB et insta
+
+Y a-t-il des aspects ou des services que vous aimeriez mettre davantage en avant que d'autres ? Non
+
+Comment se présente l'accessibilité à vos locaux ou à vos services ? Accessible personne handicapé
+
