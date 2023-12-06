@@ -2,7 +2,6 @@
   font-family: "veteran_typewriter";
   src: url("veteran_typewriter.ttf") format("truetype");
 }
-
 * {
   margin: 0;
   padding: 0;
@@ -69,3 +68,8 @@ a .lien_nav {
   margin: 15px;
   background-color: transparent;
 }
+body {
+  height: 100%;
+  width: 100%;
+}
+
