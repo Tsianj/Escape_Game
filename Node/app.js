@@ -1,5 +1,6 @@
 const express = require("express");
 const utilisateur = require("./modules/utilisateur");
+const escapes = require("./modules/escapes");
 const utilisateurService = require("./services/utilisateurService");
 const cors = require("cors");
 const app = express();
@@ -22,7 +23,7 @@ const allowedOrigins = ['http://localhost:3001',
             }    return callback(null, true);
         }
     }));
-    
+    app.use("/escapes", escapes);
     app.use("/utilisateur", utilisateur);
     app.post("/connexion", (req, res) => {
         let data = req.body;

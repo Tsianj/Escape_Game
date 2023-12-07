@@ -1,0 +1,67 @@
+.homepage {
+  margin-left: 200px;
+  color: var(--color-font);
+}
+
+h1 {
+  color: var(--colors-secondaire);
+  margin: 30px;
+  display: flex;
+  justify-content: center;
+}
+
+.story {
+  background-image: url(./Assets/fond.svg);
+  margin: 20px;
+  margin-left: 80px;
+  margin-right: 100px;
+  padding: 40px;
+  display: block;
+  text-align: center;
+  font-size: 28px;
+}
+
+.story h3 {
+  justify-content: center;
+  margin-bottom: 20px;
+  font-size: 32px;
+}
+
+.homepage .titre {
+  height: 5px;
+  margin: 20px;
+  margin-left: 80px;
+  margin-right: 100px;
+  background: var(--colors-secondaire);
+  position: relative;
+  margin-top: 32px;
+  display: flex;
+  justify-content: center;
+}
+.homepage .titre h3 {
+  background-color: #22000e;
+  top: -25px;
+  font-size: 32px;
+  padding: 8px 20px 8px 20px;
+  display: inline;
+  position: absolute;
+}
+
+@media (max-width: 900px) {
+  .homepage {
+    margin: 5px;
+    color: var(--color-font);
+  }
+  h1 {
+    margin-top: 75px;
+    text-align: center;
+  }
+  .story {
+    margin: 20px;
+    padding: 20px;
+  }
+  .homepage .titre {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+}
