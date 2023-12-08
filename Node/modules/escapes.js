@@ -14,5 +14,15 @@ router.get("/", (req, res) => {
     });
 });
 
+router.get("/", (req, res) => {
+    escapesService.fetchEscapesCard().then(result => {
+        res.status(200)
+        res.json(result);
+    }).catch(err => {
+        console.error("Oops...", err);
+        res.json({"message" : "Error" + err.sqlMessage})
+    });
+});
+
 
 module.exports = router;
