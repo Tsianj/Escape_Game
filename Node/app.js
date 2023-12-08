@@ -1,8 +1,10 @@
 const express = require("express");
 const utilisateur = require("./modules/utilisateur");
 const escapes = require("./modules/escapes");
+const galerie = require("./modules/galerie");
 const utilisateurService = require("./services/utilisateurService");
 const reservationService = require("./services/reservationService");
+const galerieService = require("./services/galerieService");
 const cors = require("cors");
 const app = express();
 const port = 3000;
@@ -43,7 +45,7 @@ app.post("/connexion", (req, res) => {
       res.send({ message: "Votre ajout ne s'est pas bien passé" });
     });
 });
-
+app.use("/galerie", galerie);
 app.use("/utilisateur", utilisateur);
 app.post("/reservation", (req, res) => {
   let data = req.body;
@@ -59,7 +61,7 @@ app.post("/reservation", (req, res) => {
 });
 app.listen(port, () => {
   console.log(
-    `Application exemple à l'écoute sur le port http://127.0.0.1:${port}/ !`
+    `Application exemple à l'écoute sur le port http://localhost:${port}/ !`
   );
-  console.log(`Route connexion : http://127.0.0.1:${port}/connexion !`);
+  console.log(`Route utilisateur : http://localhost:${port}/utilisateur !`);
 });
