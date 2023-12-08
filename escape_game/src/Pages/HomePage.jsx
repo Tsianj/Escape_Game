@@ -2,11 +2,12 @@ import React, { useEffect, useState } from "react";
 import CardEscape from "../Components/CardsEscape";
 import CardDom from "../Components/CardsDom";
 import Escapes from "../Services/escapesService";
+
 import "../HomePage.css";
 
 const HomePage = () => {
   const [escp, setEscp] = useState([]);
-
+  
   const fetchEscapesCard = async () => {
     try {
       await Escapes.fetchEscapesCard().then((response) => {
@@ -24,6 +25,7 @@ const HomePage = () => {
       await Escapes.fetchEscapesCardDom().then((response) => {
         setEscpdom(response.data);
       });
+
     } catch (e) {
       console.log(e);
     }
