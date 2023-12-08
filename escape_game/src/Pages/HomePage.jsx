@@ -9,7 +9,11 @@ const HomePage = () => {
 
   const fetchEscapesCard = async () => {
     try {
-       await Escapes.fetchEscapesCard().then((response) => {setEscp(response.data)})
+
+      await Escapes.fetchEscapesCard().then((response) => {
+        setEscp(response.data)
+      });
+
     } catch (e) {
       console.log(e);
     }

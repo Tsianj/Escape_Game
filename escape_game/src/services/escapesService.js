@@ -5,7 +5,9 @@ function fetchEscapes() {
 }
 
 function fetchEscapesCard() {
-    return axios.get("http://127.0.0.1:3000/escapes/card");
+
+    return axios.get("http://127.0.0.1:3000/escapes/card" );
+
   }
 
 
