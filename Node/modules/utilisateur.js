@@ -4,7 +4,7 @@ const router = express.Router();
 
 /*Ce sont des routes pour des pages d'acceuil (de présentation) comme dans scolarité*/ 
 router.get("/", (req, res) => {
-    historiqueService.fetchHistorique().then(result => {
+    utilisateurService.fetchUtilisateur().then(result => {
         res.status(200)
         res.json(result);
     }).catch(err => {
