@@ -4,11 +4,11 @@ import { Link } from "react-router-dom";
 
 
 const Cards = ({ escapes }) => {
-  console.log(escapes)
+
   return (
     <>
     <div className="card">
-      <Card className={"col-3"}>
+      <Card>
         <Link to={"/escapes/details"} state={escapes}>
           <Card style={{ width: "18rem" }}>
             <Card.Body>
