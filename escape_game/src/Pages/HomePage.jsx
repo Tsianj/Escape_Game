@@ -9,9 +9,7 @@ const HomePage = () => {
 
   const fetchEscapesCard = async () => {
     try {
-      const response = await Escapes.fetchEscapesCard();
-      setEscp(response.data.results);
-      console.log(response.data.results)
+       await Escapes.fetchEscapesCard().then((response) => {setEscp(response.data)})
     } catch (e) {
       console.log(e);
     }
@@ -20,6 +18,8 @@ const HomePage = () => {
   useEffect(() => {
     fetchEscapesCard();
   }, []);
+
+
 
   return (
     <body>
@@ -37,22 +37,24 @@ const HomePage = () => {
         </div>
         <div className="titre">
           <h3>Escape Game</h3>
+          <h4>Sur place</h4>
         </div>{" "}
 
 
-
-        <div className="card-container"></div>
         <div className="escape-container">
           {escp.map((e) => {
-            return <CardEscape key={escp.id_escape} escp={e} />;
+            return <CardEscape key={escp.id_escape} escapes={e} />;
           })}
         </div>
+
+
+          <h4>Domicile</h4>
 
 
 
 
         <div className="titre">
-          <h3 className="lieux">Sur place</h3>
+          <h3 className="lieux">Mini Jeux</h3>
         </div>
         <CardDom />
       </div>{" "}

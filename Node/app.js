@@ -3,6 +3,8 @@ const utilisateur = require("./modules/utilisateur");
 const escapes = require("./modules/escapes");
 const utilisateurService = require("./services/utilisateurService");
 const reservationService = require("./services/reservationService");
+const galerie = require("./modules/galerie");
+const galerieService = require("./services/galerieService");
 const cors = require("cors");
 const app = express();
 const port = 3000;
@@ -43,7 +45,7 @@ app.post("/connexion", (req, res) => {
       res.send({ message: "Votre ajout ne s'est pas bien passé" });
     });
 });
-
+app.use("/galerie", galerie);
 app.use("/utilisateur", utilisateur);
 app.post("/reservation", (req, res) => {
   let data = req.body;
