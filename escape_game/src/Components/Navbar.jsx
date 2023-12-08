@@ -31,13 +31,14 @@ function NavBar() {
               setIsActive(!isActive);
             }}
           />        
+          <Link to={"/"}>
           <img
           src={Logo}
           id="logo"
           width={"120px"}
           alt="Logo"
           placeholder="Logo_escape_game"
-        />
+        /></Link>
           <Link to={"/connexion"}>
             <button className="lien_nav">Connexion</button>
           </Link>

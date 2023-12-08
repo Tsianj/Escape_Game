@@ -9,9 +9,9 @@ const HomePage = () => {
 
   const fetchEscapesCard = async () => {
     try {
-      const response = await Escapes.fetchEscapesCard();
-      setEscp(response.data.results);
-      console.log(response.data.results)
+      await Escapes.fetchEscapesCard().then((response) => {
+        setEscp(response.data)
+      });
     } catch (e) {
       console.log(e);
     }
@@ -44,7 +44,7 @@ const HomePage = () => {
         <div className="card-container"></div>
         <div className="escape-container">
           {escp.map((e) => {
-            return <CardEscape key={escp.id_escape} escp={e} />;
+            return <CardEscape key={escp.id_escape} escapes={e} />;
           })}
         </div>
 
