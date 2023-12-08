@@ -12,7 +12,6 @@ function NavBar() {
   return (
     <>
       <div className="navbar">
-
         <img
           src={MenuBurger}
           alt="menu burger"
@@ -30,6 +29,7 @@ function NavBar() {
             onClick={() => {
               setIsActive(!isActive);
             }}
+
           />        
           <Link to={"/"}>
           <img
@@ -39,6 +39,7 @@ function NavBar() {
           alt="Logo"
           placeholder="Logo_escape_game"
         /></Link>
+
           <Link to={"/connexion"}>
             <button className="lien_nav">Connexion</button>
           </Link>

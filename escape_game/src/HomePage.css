@@ -27,6 +27,12 @@ h1 {
   font-size: 32px;
 }
 
+.titre h4 {
+  justify-content: center;
+  margin-top: 30px;
+  font-size: 28px;
+}
+
 .homepage .titre {
   height: 5px;
   margin: 20px;
@@ -47,6 +53,13 @@ h1 {
   position: absolute;
 }
 
+h4 {
+  justify-content: center;
+  margin-top: 30px;
+  text-align: center;
+  font-size: 28px;
+}
+
 @media (max-width: 900px) {
   .homepage {
     margin: 5px;
@@ -64,4 +77,31 @@ h1 {
     margin-left: 20px;
     margin-right: 20px;
   }
+}
+
+.escape-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 70px;
+}
+
+.card {
+  width: 200px;
+  height: 300px;
+  display: flex;
+  margin: 25px auto 50px auto;
+}
+
+.image {
+  width: 200px;
+  height: 300px;
+}
+
+.title_card {
+  color: var(--color-font);
+  font-size: 22px;
+  text-align: center;
+  margin-top: -10px;
+  margin-bottom: 10px;
 }
