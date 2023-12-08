@@ -19,7 +19,18 @@ const addUtilisateur = (utilisateur) => {
     });
 }
 
+const connUtilisateur = (utilisateur) => {
+    return new Promise((resolve, reject) => {
+        let sql = `SELECT * FROM utilisateur WHERE mail_uti = '${utilisateur.mail_uti}' AND passwords = '${utilisateur.passwords}';`;
+        let query = conn.query(sql, (err, result, field) => {
+            if(err) return reject(err);
+            resolve(result);
+        });
+    });
+}
+
 module.exports = {
     fetchUtilisateur, 
-    addUtilisateur
+    addUtilisateur,
+    connUtilisateur
 };
