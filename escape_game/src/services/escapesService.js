@@ -10,9 +10,12 @@ function fetchEscapesCard() {
 
   }
 
+  function fetchEscapesCardDom() {
+    return axios.get("http://127.0.0.1:3000/escapes/carddom");
+  }
 
 export default { 
     fetchEscapes, 
-    fetchEscapesCard
-
+    fetchEscapesCard,
+    fetchEscapesCardDom
 };

@@ -1,28 +1,23 @@
-import React from "react";
 import Card from "react-bootstrap/Card";
-import Tronedefer from "../Assets/trone_de_fer(1).png";
+import React from "react";
 import { Link } from "react-router-dom";
 
-const Cards = () => {
+
+const Cards = ({ escapesdom }) => {
+
   return (
     <>
-      {/* <Link to="/">
-        <Card.Img
-          variant="top"
-          src="https://i.pinimg.com/736x/00/00/00/00000000000000000000000000000000.jpg"
-        />
-
-        <Card style={{ width: "18rem" }}>
-          <Card.Img variant="top" src={Tronedefer} />
-          <Card.Body>
-            <Card.Title>Card Title</Card.Title>
-            <Card.Text>
-              Some quick example text to build on the card title and make up the
-              bulk of the card's content.
-            </Card.Text>
-          </Card.Body>
-        </Card>
-      </Link> */}
+    <div className="card">
+      <Card className={"col-3"}>
+        <Link to={"/escapes/details"} state={escapesdom}>
+          <Card style={{ width: "18rem" }}>
+            <Card.Body>
+              <Card.Title className="title_card">{escapesdom.nom_escapes}</Card.Title>
+              <Card.Img className="image" variant="top" src={escapesdom.url} />
+            </Card.Body>
+          </Card>
+        </Link>
+      </Card></div>
     </>
   );
 };

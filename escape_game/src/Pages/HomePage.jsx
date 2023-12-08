@@ -10,9 +10,20 @@ const HomePage = () => {
   
   const fetchEscapesCard = async () => {
     try {
-
       await Escapes.fetchEscapesCard().then((response) => {
-        setEscp(response.data)
+        setEscp(response.data);
+      });
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  const [escpdom, setEscpdom] = useState([]);
+
+  const fetchEscapesCardDom = async () => {
+    try {
+      await Escapes.fetchEscapesCardDom().then((response) => {
+        setEscpdom(response.data);
       });
 
     } catch (e) {
@@ -22,9 +33,8 @@ const HomePage = () => {
 
   useEffect(() => {
     fetchEscapesCard();
+    fetchEscapesCardDom();
   }, []);
-
-
 
   return (
     <body>
@@ -40,28 +50,28 @@ const HomePage = () => {
             participants dans des univers extraordinaires
           </p>
         </div>
-        <div className="titre">
-          <h3>Escape Game</h3>
-          <h4>Sur place</h4>
-        </div>{" "}
 
-
-        <div className="escape-container">
-          {escp.map((e) => {
-            return <CardEscape key={escp.id_escape} escapes={e} />;
-          })}
-        </div>
-
-
+        <div className="block_card">
+          <div className="titre">
+            <h3>Escape Game</h3>
+            <h4>Sur place</h4>
+          </div>{" "}
+          <div className="escape-container">
+            {escp.map((e) => {
+              return <CardEscape key={escp.id_escape} escapes={e} />;
+            })}
+          </div>
           <h4>Domicile</h4>
-
-
-
+          <div className="escape-container">
+            {escpdom.map((e) => {
+              return <CardDom key={escpdom.id_escape} escapesdom={e} />;
+            })}
+          </div>
+        </div>
 
         <div className="titre">
           <h3 className="lieux">Mini Jeux</h3>
         </div>
-        <CardDom />
       </div>{" "}
     </body>
   );

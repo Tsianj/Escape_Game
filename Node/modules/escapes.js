@@ -24,5 +24,15 @@ router.get("/card", (req, res) => {
     });
 });
 
+router.get("/carddom", (req, res) => {
+    escapesService.fetchEscapesCardDom().then(result => {
+        res.status(200)
+        res.json(result);
+    }).catch(err => {
+        console.error("Oops...", err);
+        res.json({"message" : "Error" + err.sqlMessage})
+    });
+});
+
 
 module.exports = router;

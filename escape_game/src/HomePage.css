@@ -79,6 +79,11 @@ h4 {
   }
 }
 
+.block_card {
+  margin-left: 45px;
+  margin-right: 45px;
+}
+
 .escape-container {
   display: flex;
   align-items: center;
@@ -87,21 +92,22 @@ h4 {
 }
 
 .card {
-  width: 200px;
+  width: 250px;
   height: 300px;
   display: flex;
-  margin: 25px auto 50px auto;
+  margin: 25px auto 25px auto;
+  text-align: center;
 }
 
 .image {
   width: 200px;
   height: 300px;
+  object-fit: cover;
 }
 
 .title_card {
   color: var(--color-font);
   font-size: 22px;
-  text-align: center;
   margin-top: -10px;
   margin-bottom: 10px;
 }
