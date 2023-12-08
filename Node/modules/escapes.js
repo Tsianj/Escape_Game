@@ -14,7 +14,7 @@ router.get("/", (req, res) => {
     });
 });
 
-router.get("/", (req, res) => {
+router.get("/card", (req, res) => {
     escapesService.fetchEscapesCard().then(result => {
         res.status(200)
         res.json(result);
