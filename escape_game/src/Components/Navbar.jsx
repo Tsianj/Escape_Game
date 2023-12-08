@@ -1,13 +1,16 @@
 import Logo from "../Assets/logo_escape.png";
-import { React, useState } from "react";
+import { React, useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import LogoFcb from "../Assets/icons8-logo-facebook-50.png";
 import LogoInsta from "../Assets/icons8-logo-instagram-50.png";
 import MenuBurger from "../Assets/icons8-menu-64.png";
 import Connexion from "../Pages/Connexion";
+import AuthContext from "../Components/AuthContext";
+import Auth from "../Services/Auth";
 
 function NavBar() {
   const [isActive, setIsActive] = useState(false);
+  const { isAuthenticated, setIsAuthenticated, user } = useContext(AuthContext);
 
   return (
     <>
@@ -30,19 +33,24 @@ function NavBar() {
               setIsActive(!isActive);
             }}
 
-          />        
+          />
           <Link to={"/"}>
-          <img
-          src={Logo}
-          id="logo"
-          width={"120px"}
-          alt="Logo"
-          placeholder="Logo_escape_game"
-        /></Link>
+            <img
+              src={Logo}
+              id="logo"
+              width={"120px"}
+              alt="Logo"
+              placeholder="Logo_escape_game"
+            /></Link>
+          {isAuthenticated === false ? <>
+            <Link to={"/connexion"}>
+              <button className="lien_nav">Connexion</button>
+            </Link>
+          </> :
+            <button className="lien_nav" onClick={()=>{setIsAuthenticated(false); Auth.logout()}}>Déconnexion</button>
 
-          <Link to={"/connexion"}>
-            <button className="lien_nav">Connexion</button>
-          </Link>
+          }
+
           <Link>
             <button className="lien_nav">Profil</button>
           </Link>
