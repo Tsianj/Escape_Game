@@ -22,15 +22,33 @@ const fetchEscapesCard = () => {
 
 const fetchEscapesCardDom = () => {
     return new Promise((resolve, reject) => {
-        let sql = `SELECT es.id_escape, es.nom_escapes, es.escape_dom, gl.url, gl.alt, gl.id_galerie FROM escapes AS es JOIN galerie AS gl ON es.id_escape = gl.id_escape WHERE es.escape_dom = 1`;
+        let sql = `SELECT es.id_escape, es.nom_escapes, es.escape_dom, gl.url, gl.alt, gl.id_galerie FROM escapes AS es  JOIN galerie AS gl ON es.id_escape = gl.id_escape WHERE es.escape_dom = 1`;
         let query = conn.query(sql, (err, result, field) => {
             if(err) return reject(err);
             resolve(result);
         });
     });
 }
+const fetchEscapeNames = () => {
+    return new Promise((resolve, reject) => {
+        let sql = `SELECT nom_escapes FROM escapes WHERE escape_dom = 0;`; 
+        let query = conn.query(sql, (err, result, field) => {
+            if(err) return reject(err);
+            resolve(result); 
+        });
+    });
+};
+const fetchEscapeNamesDom = () => {
+    return new Promise((resolve, reject) => {
+        let sql = `SELECT nom_escapes FROM escapes WHERE escape_dom = 1;`; 
+        let query = conn.query(sql, (err, result, field) => {
+            if(err) return reject(err);
+            resolve(result); 
+        });
+    });
+};
 
 
 
 
-module.exports = {fetchEscapes, fetchEscapesCard,fetchEscapesCardDom};
+module.exports = {fetchEscapes, fetchEscapesCard,fetchEscapesCardDom, fetchEscapeNames, fetchEscapeNamesDom};
