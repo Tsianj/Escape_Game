@@ -7,7 +7,11 @@ import "../HomePage.css";
 
 const HomePage = () => {
   const [escp, setEscp] = useState([]);
+<<<<<<< HEAD
+  const { isAuthenticated, setIsAuthenticated, user } = useContext(AuthContext);
+=======
   const { isAuthenticated, setIsAuthenticated, user } = useContext(AuthContext); 
+>>>>>>> 86b11a86e62d606b46bba0c432d9d71bbd9646f6
   const fetchEscapesCard = async () => {
     try {
       await Escapes.fetchEscapesCard().then((response) => {
@@ -24,7 +28,10 @@ const HomePage = () => {
         setEscpdom(response.data);
       });
 
+<<<<<<< HEAD
+=======
 
+>>>>>>> 86b11a86e62d606b46bba0c432d9d71bbd9646f6
     } catch (e) {
       console.log(e);
     }
@@ -52,6 +59,14 @@ const HomePage = () => {
         </div>
 
 
+<<<<<<< HEAD
+
+        <div className="card-container"></div>
+        <div className="escape-container">
+          {escp.map((e) => {
+            return <CardEscape key={escp.id_escape} escapes={e} />;
+          })}
+=======
         <div className="block_card">
           <div className="titre">
             <h3>Escape Game</h3>
@@ -68,6 +83,7 @@ const HomePage = () => {
               return <CardDom key={escpdom.id_escape} escapesdom={e} />;
             })}
           </div>
+>>>>>>> 86b11a86e62d606b46bba0c432d9d71bbd9646f6
         </div>
 
         <div className="titre">

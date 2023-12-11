@@ -4,6 +4,11 @@ const escapes = require("./modules/escapes");
 const galerie = require("./modules/galerie");
 const reservation = require("./modules/reservation");
 const utilisateurService = require("./services/utilisateurService");
+<<<<<<< HEAD
+const reservationService = require("./services/reservationService");
+const galerieService = require("./services/galerieService");
+=======
+>>>>>>> 86b11a86e62d606b46bba0c432d9d71bbd9646f6
 const cors = require("cors");
 const app = express();
 const port = 3000;
