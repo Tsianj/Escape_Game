@@ -4,18 +4,20 @@ import { Link } from "react-router-dom";
 
 
 const Cards = ({ escapes }) => {
+
   return (
     <>
-      <Card className={"col-3"}>
+    <div className="card">
+      <Card>
         <Link to={"/escapes/details"} state={escapes}>
           <Card style={{ width: "18rem" }}>
             <Card.Body>
-              <Card.Title>{escapes.nom_escapes}</Card.Title>
-              <Card.Img variant="top" src={escapes.url} />
+              <Card.Title className="title_card">{escapes.nom_escapes}</Card.Title>
+              <Card.Img className="image" variant="top" src={escapes.url} />
             </Card.Body>
           </Card>
         </Link>
-      </Card>
+      </Card></div>
     </>
   );
 };

@@ -10,7 +10,22 @@ const HomePage = () => {
   const { isAuthenticated, setIsAuthenticated, user } = useContext(AuthContext);
   const fetchEscapesCard = async () => {
     try {
-      await Escapes.fetchEscapesCard().then((response)=>setEscp(response.data));
+      await Escapes.fetchEscapesCard().then((response) => {
+        setEscp(response.data);
+      });
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  const [escpdom, setEscpdom] = useState([]);
+
+  const fetchEscapesCardDom = async () => {
+    try {
+      await Escapes.fetchEscapesCardDom().then((response) => {
+        setEscpdom(response.data);
+      });
+
     } catch (e) {
       console.log(e);
     }
@@ -18,6 +33,7 @@ const HomePage = () => {
 
   useEffect(() => {
     fetchEscapesCard();
+    fetchEscapesCardDom();
   }, []);
 
   return (   
@@ -35,9 +51,6 @@ const HomePage = () => {
             participants dans des univers extraordinaires
           </p>
         </div>
-        <div className="titre">
-          <h3>Escape Game</h3>
-        </div>{" "}
 
 
 
@@ -48,13 +61,9 @@ const HomePage = () => {
           })}
         </div>
 
-
-
-
         <div className="titre">
-          <h3 className="lieux">Sur place</h3>
+          <h3 className="lieux">Mini Jeux</h3>
         </div>
-        <CardDom />
       </div>{" "}
     </body>
   );

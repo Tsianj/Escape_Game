@@ -9,3 +9,7 @@ const addResa = (resa) => {
         });
     })
 }
+
+module.exports = {
+    addResa
+}
