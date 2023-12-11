@@ -1,8 +1,88 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
+import AuthContext from "../Components/AuthContext";
 import "../Connexion.css";
+import reservationService from '../Services/reservationService';
+import escapesService from "../Services/escapesService";
 
 const Reservation = () => {
   const [isActive, setIsActive] = useState(false);
+  const { setUser, setIsAuthenticated } = useContext(AuthContext);
+  const [formData, setFormData] = useState({
+    domicile: {
+      id_escape: "",
+      creneau: "",
+      Nb_participant: 2, // Mettez la valeur par défaut pour le nombre de participants à domicile
+    },
+    surPlace: {
+      id_escape: "",
+      creneau: "",
+      Nb_participant: 2,
+    },
+  });
+  const [escapeNom, setEscapeNom] = useState([]);
+  const fetchEscapeNom = async () => {
+    try {
+      escapesService.fetchEscapeNames().then((response) => {
+        setEscapeNom(response.data);
+      });
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  const [escapeNomDom, setEscapeNomDom] = useState([]);
+  const fetchEscapeNomDom = async () => {
+    try {
+      escapesService.fetchEscapeNamesDom().then((response) => {
+        setEscapeNomDom(response.data);
+      });
+
+    } catch (e) {
+      console.log(e);
+    }
+  };
+  useEffect(() => {
+    fetchEscapeNomDom();
+    fetchEscapeNom();
+  }, []);
+
+  const handleInputChange = (event, section, field) => {
+    const value = event.target.value;
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      [section]: {
+        ...prevFormData[section],
+        [field]: value,
+      },
+    }));
+  };
+
+  const handleFormSubmit = (event) => {
+    event.preventDefault();
+    const selectedDate = new Date(formData.domicile.dateTime);
+    const disallowedHours = [0, 1, 2, 3, 4, 5, 6, 7, 8, 11, 12, 13, 23];
+  
+    if (disallowedHours.includes(selectedDate.getHours())) {
+      // Si l'heure sélectionnée est dans la liste des heures non autorisées, afficher un message d'erreur et ne pas envoyer la requête
+      if (selectedDate.getHours() === 11 || selectedDate.getHours() === 23) {
+        alert("Délais insuffisant pour une partie."); // Alert pour les heures 11h et 23h
+      } else {
+        alert("Les horaires d'ouverture sont de 9h - 12h et 14h - Minuit."); // Autres heures non autorisées
+      }
+      return; // Arrêter la fonction après l'affichage de l'alerte
+    } else {
+      // Si l'heure est valide, envoyer les données au serveur
+      reservationService.addReservation(formData.domicile)
+        .then((response) => {
+          console.log("Réponse du serveur :", response.data);
+          // Effectuer des actions supplémentaires après avoir reçu la réponse du serveur, si nécessaire
+        })
+        .catch((error) => {
+          console.error("Erreur lors de l'envoi au serveur :", error);
+          // Gérer les erreurs ici, afficher un message à l'utilisateur, etc.
+        });
+    }
+  };
   const handleDateTimeChange = (event) => {
     const selectedDate = new Date(event.target.value);
     const disallowedHours = [0, 1, 2, 3, 4, 5, 6, 7, 8, 11, 12, 13, 23]; // Heures de minuit à 9h et de 12h à 14h
@@ -16,7 +96,15 @@ const Reservation = () => {
         alert("Les horaires d'ouverture sont de 9h - 12h et 14h - Minuit."); // Autres heures non autorisées
       }
     }
+        setFormData((prevFormData) => ({
+      ...prevFormData,
+      domicile: {
+        ...prevFormData.domicile,
+        creneau: event.target.value,
+      },
+    }));
   };
+
   return (
     <>
       <div className="body">
@@ -26,24 +114,30 @@ const Reservation = () => {
         >
           {/* <!-- Formulaire d'inscription --> */}
           <div className="form-container sign-up">
-            <form>
+            <form onSubmit={handleFormSubmit}>
               <h1>A domicile</h1>
               {/* <!-- Champs pour entrer le nom, l'email et le mot de passe --> */}
               <input type="hidden" value={true} required />
-              <input type="text" placeholder="Nom" required />
-              <input type="text" placeholder="Prénom" required />
-              <input type="email" placeholder="Adresse mail" required />
-              <input type="text" placeholder="Adresse Postale" required />
-              <input type="tel" placeholder="Numéro de téléphone" required />
-              <input type="text" placeholder="Nom de l'escape game" required />
+              <select name="id_escape" value={formData.domicile.id_escape}
+            onChange={(e) => handleInputChange(e, "domicile", "id_escape")} required
+            >
+            <option value="">Choisir un escape game</option>
+            {escapeNomDom.map((escapeGame) => (
+              <option key={escapeGame.id_escape} value={escapeGame.id_escape}>
+                {escapeGame.nom_escapes}
+              </option>
+            ))}
+            </select>
               <input
                 type="datetime-local"
                 onChange={handleDateTimeChange}
+                value={formData.domicile.creneau}
                 required
               />
               <input
                 type="number"
-                placeholder="Nombre de participants"
+                placeholder="Nombre de participants" value={formData.domicile.Nb_participant}
+                onChange={(e) => handleInputChange(e, "domicile", "Nb_participant")}
                 min={2}
                 max={10}
                 required
@@ -55,24 +149,32 @@ const Reservation = () => {
           {/* <!-- Formulaire de connexion --> */}
           <div className="form-container sign-in">
             <form>
-              <h1>Sur Place</h1>
-              <input type="email" placeholder="Adresse mail" required />
-              <input type="text" placeholder="Nom" required />
-              <input type="text" placeholder="Prénom" required />
-              <input type="tel" placeholder="Numéro de téléphone" required />
+              <h1>Sur Place</h1>              
+              <select name="id_escape" value={formData.domicile.id_escape}
+            onChange={(e) => handleInputChange(e, "domicile", "id_escape")} required 
+            >
+            <option value="">Choisir un escape game</option>
+            {escapeNom.map((escapeGame) => (
+              <option key={escapeGame.id_escape} value={escapeGame.id_escape}>
+                {escapeGame.nom_escapes}
+              </option>
+            ))}
+            </select>
               <input
                 type="datetime-local"
                 onChange={handleDateTimeChange}
+                value={formData.domicile.creneau}
                 required
               />
-              <input type="text" placeholder="Nom de l'escape game" required />
               <input
                 type="number"
-                placeholder="Nombre de participants"
+                placeholder="Nombre de participants" value={formData.domicile.Nb_participant}
+                onChange={(e) => handleInputChange(e, "domicile", "Nb_participant")}
                 min={2}
                 max={8}
                 required
               />
+              
               <p>Minimum 2 personnes et maximum 8 personnes</p>
 
               <button type="submit">Envoyer</button>
