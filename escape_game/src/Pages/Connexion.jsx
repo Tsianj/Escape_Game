@@ -5,6 +5,7 @@ import "../Connexion.css";
 import utilisateurService from "../Services/utilisateurService";
 import { useNavigate } from "react-router-dom";
 
+
 const Connexion = () => {
   const [isActive, setIsActive] = useState(false);
   const [utilisateur, setUtilisateur] = useState({});
@@ -23,15 +24,16 @@ const Connexion = () => {
     }
     console.log(utilisateur);
   };
-
+ 
   const handleConn = async (e) => {
     e.preventDefault();
     try {
       const response = await utilisateurService.loginUtilisateur(utilisateur);
-      setUser(response.data);
+      
+      setTimeout(()=>{
+        setUser(response.data);
       setIsAuthenticated(true);
       Auth.setUser(JSON.stringify(response.data));
-      setTimeout(() => {
         navigate("/");
       }, 800);
     } catch (e) {
@@ -41,6 +43,7 @@ const Connexion = () => {
 
   return (
     <>
+
       <div className="body">
         <div
           className={isActive ? "container active" : "container"}
@@ -125,7 +128,7 @@ const Connexion = () => {
               />
               {/* <!-- Lien pour réinitialiser le mot de passe --> */}
               <a href="#">Mot de passe oublié</a>
-              <input type="submit" value="Se connecter" />
+              <button type="submit" value="Se connecter" onClick={handleConn}>Se connecter</button>
             </form>
           </div>
           {/* <!-- Conteneur pour basculer entre les formulaires --> */}
@@ -133,7 +136,7 @@ const Connexion = () => {
             <div className="toggle">
               {/* <!-- Panneau pour le formulaire de connexion --> */}
               <div className="toggle-panel toggle-left">
-                <h1>Bon Retour!</h1>
+                <h1 className="titre-form">Bon Retour!</h1>
                 <p>Pour vos connecter sur notre site</p>
                 <button
                   className="hidden"
@@ -147,7 +150,7 @@ const Connexion = () => {
               </div>
               {/* <!-- Panneau pour le formulaire d'inscription --> */}
               <div className="toggle-panel toggle-right">
-                <h1>Bienvenue</h1>
+                <h1 className="titre-form">Bienvenue</h1>
                 <p>Inscrivez-vous pour pouvoir faire vos réservations</p>
                 <button
                   className="hidden"

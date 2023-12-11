@@ -26,6 +26,9 @@
   max-width: 100vw;/* Limite la largeur maximale du conteneur origine 100%*/
   min-height: 550px;
 }
+.titre-form{
+  color: #fff;
+}
 /* Styles pour les paragraphes */
 .container p {
   font-size: 14px;

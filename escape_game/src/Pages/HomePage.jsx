@@ -7,10 +7,24 @@ import "../HomePage.css";
 
 const HomePage = () => {
   const [escp, setEscp] = useState([]);
-  const { isAuthenticated, setIsAuthenticated, user } = useContext(AuthContext);
+  const { isAuthenticated, setIsAuthenticated, user } = useContext(AuthContext); 
   const fetchEscapesCard = async () => {
     try {
-      await Escapes.fetchEscapesCard().then((response)=>setEscp(response.data));
+      await Escapes.fetchEscapesCard().then((response) => {
+        setEscp(response.data);
+      });
+    } catch (e) {
+      console.log(e);
+    }
+  };
+  const [escpdom, setEscpdom] = useState([]);
+  const fetchEscapesCardDom = async () => {
+    try {
+      await Escapes.fetchEscapesCardDom().then((response) => {
+        setEscpdom(response.data);
+      });
+
+
     } catch (e) {
       console.log(e);
     }
@@ -18,6 +32,7 @@ const HomePage = () => {
 
   useEffect(() => {
     fetchEscapesCard();
+    fetchEscapesCardDom();
   }, []);
 
   return (   
@@ -35,26 +50,29 @@ const HomePage = () => {
             participants dans des univers extraordinaires
           </p>
         </div>
-        <div className="titre">
-          <h3>Escape Game</h3>
-        </div>{" "}
 
 
-
-        <div className="card-container"></div>
-        <div className="escape-container">
-          {escp.map((e) => {
-            return <CardEscape key={escp.id_escape} escapes={e} />;
-          })}
+        <div className="block_card">
+          <div className="titre">
+            <h3>Escape Game</h3>
+            <h4>Sur place</h4>
+          </div>{" "}
+          <div className="escape-container">
+            {escp.map((e) => {
+              return <CardEscape key={escp.id_escape} escapes={e} />;
+            })}
+          </div>
+          <h4>Domicile</h4>
+          <div className="escape-container">
+            {escpdom.map((e) => {
+              return <CardDom key={escpdom.id_escape} escapesdom={e} />;
+            })}
+          </div>
         </div>
 
-
-
-
         <div className="titre">
-          <h3 className="lieux">Sur place</h3>
+          <h3 className="lieux">Mini Jeux</h3>
         </div>
-        <CardDom />
       </div>{" "}
     </body>
   );

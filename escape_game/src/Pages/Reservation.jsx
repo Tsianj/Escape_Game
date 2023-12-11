@@ -83,7 +83,7 @@ const Reservation = () => {
             <div className="toggle">
               {/* <!-- Panneau pour le formulaire de connexion --> */}
               <div className="toggle-panel toggle-left">
-                <h1>Sur site</h1>
+                <h1 className="titre-form">Sur site</h1>
                 <p>Pour vos réservations sur site remplissez le formulaire</p>
                 <button
                   className="hidden"
@@ -97,7 +97,7 @@ const Reservation = () => {
               </div>
               {/* <!-- Panneau pour le formulaire d'inscription --> */}
               <div className="toggle-panel toggle-right">
-                <h1>Domicile</h1>
+                <h1 className="titre-form">Domicile</h1>
                 <p>Pour vos réservations à domicile remplissez le formulaire</p>
                 <button
                   className="hidden"
