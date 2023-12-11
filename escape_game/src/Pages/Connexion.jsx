@@ -4,6 +4,10 @@ import AuthContext from "../Components/AuthContext";
 import "../Connexion.css";
 import utilisateurService from "../Services/utilisateurService";
 import { useNavigate } from "react-router-dom";
+<<<<<<< HEAD
+=======
+
+>>>>>>> 86b11a86e62d606b46bba0c432d9d71bbd9646f6
 
 const Connexion = () => {
   const [isActive, setIsActive] = useState(false);

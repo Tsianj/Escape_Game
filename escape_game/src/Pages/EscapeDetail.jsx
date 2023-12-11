@@ -1,17 +1,15 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState } from "react";
+import { useParams, Link } from "react-router-dom";
 import CardEscape from "../Components/CardsEscape";
 import CardDom from "../Components/CardsDom";
 import Escapes from "../Services/escapesService";
-import AuthContext from "../Components/AuthContext";
-import "../HomePage.css";
+import "..//EscapeDetail.css";
 
-const HomePage = () => {
+const EscapeDetail = () => {
+  const { id } = useParams();
+
   const [escp, setEscp] = useState([]);
-<<<<<<< HEAD
-  const { isAuthenticated, setIsAuthenticated, user } = useContext(AuthContext);
-=======
-  const { isAuthenticated, setIsAuthenticated, user } = useContext(AuthContext); 
->>>>>>> 86b11a86e62d606b46bba0c432d9d71bbd9646f6
+
   const fetchEscapesCard = async () => {
     try {
       await Escapes.fetchEscapesCard().then((response) => {
@@ -21,17 +19,27 @@ const HomePage = () => {
       console.log(e);
     }
   };
+
   const [escpdom, setEscpdom] = useState([]);
+
   const fetchEscapesCardDom = async () => {
     try {
       await Escapes.fetchEscapesCardDom().then((response) => {
         setEscpdom(response.data);
       });
+    } catch (e) {
+      console.log(e);
+    }
+  };
 
-<<<<<<< HEAD
-=======
+  const [escpdetail, setEscpdetail] = useState([]);
 
->>>>>>> 86b11a86e62d606b46bba0c432d9d71bbd9646f6
+  const fetchEscapesById = async () => {
+    try {
+      Escapes.fetchEscapesById(id).then((response) => {
+        console.log(response);
+        setEscpdetail(response.data);
+      });
     } catch (e) {
       console.log(e);
     }
@@ -40,33 +48,33 @@ const HomePage = () => {
   useEffect(() => {
     fetchEscapesCard();
     fetchEscapesCardDom();
+    fetchEscapesById();
   }, []);
 
-  return (   
-     
+  return (
     <body>
-      <div className="homepage">
+      <div className="escape_detail">
         <h1>L'univers des escapes games</h1>
-        <div className="story">
-          <h3>Notre histoire </h3>
-          <p>
-            "Énigmes Évadées" a été créée avec une passion commune pour les
-            défis intellectuels et les aventures captivantes. Notre équipe
-            dévouée travaille sans relâche pour concevoir des Escape Games
-            originaux, stimulants et divertissants qui transportent les
-            participants dans des univers extraordinaires
-          </p>
+        <div className="detail">
+          <img src={escpdetail.url} />
+          <div>
+            <h3>{escpdetail.nom_escapes}</h3>
+            <p>
+              <h4 className="info_escape">Synopsis : </h4> {escpdetail.synopsis}
+              <h4 className="info_escape">Objectif Final : </h4>
+              {escpdetail.objectif}
+              <h4 className="info_escape">Tarifs : </h4>
+              {escpdetail.tarif} €<h4 className="info_escape">Durée : </h4>
+              {escpdetail.temps} min
+              <h4 className="info_escape">Difficulté : </h4>
+              {escpdetail.difficulte}
+            </p>
+          </div>
+          <Link to={`/reservation/`}>
+            <button className="reservation">Réservation</button>
+          </Link>
         </div>
 
-
-<<<<<<< HEAD
-
-        <div className="card-container"></div>
-        <div className="escape-container">
-          {escp.map((e) => {
-            return <CardEscape key={escp.id_escape} escapes={e} />;
-          })}
-=======
         <div className="block_card">
           <div className="titre">
             <h3>Escape Game</h3>
@@ -83,15 +91,10 @@ const HomePage = () => {
               return <CardDom key={escpdom.id_escape} escapesdom={e} />;
             })}
           </div>
->>>>>>> 86b11a86e62d606b46bba0c432d9d71bbd9646f6
-        </div>
-
-        <div className="titre">
-          <h3 className="lieux">Mini Jeux</h3>
         </div>
       </div>{" "}
     </body>
   );
 };
 
-export default HomePage;
+export default EscapeDetail;
