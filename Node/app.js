@@ -34,9 +34,7 @@ app.use(
 app.use("/escapes", escapes);
 app.post("/connexion", (req, res) => {
   let data = req.body;
-  utilisateurService
-    .connUtilisateur(data)
-    .then((result) => {
+  utilisateurService.connUtilisateur(data).then((result) => {
       res.status(201);
       res.json(result[0]);
     })
