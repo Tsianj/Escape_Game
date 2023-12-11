@@ -2,9 +2,8 @@ const express = require("express");
 const utilisateur = require("./modules/utilisateur");
 const escapes = require("./modules/escapes");
 const galerie = require("./modules/galerie");
+const reservation = require("./modules/reservation");
 const utilisateurService = require("./services/utilisateurService");
-const reservationService = require("./services/reservationService");
-const galerieService = require("./services/galerieService");
 const cors = require("cors");
 const app = express();
 const port = 3000;
@@ -34,9 +33,7 @@ app.use(
 app.use("/escapes", escapes);
 app.post("/connexion", (req, res) => {
   let data = req.body;
-  utilisateurService
-    .connUtilisateur(data)
-    .then((result) => {
+  utilisateurService.connUtilisateur(data).then((result) => {
       res.status(201);
       res.json(result[0]);
     })
@@ -47,18 +44,7 @@ app.post("/connexion", (req, res) => {
 });
 app.use("/galerie", galerie);
 app.use("/utilisateur", utilisateur);
-app.post("/reservation", (req, res) => {
-  let data = req.body;
-  reservationService.addReservation(data)
-    .then((result) => {
-      res.status(201);
-      res.json(result[0]);
-    })
-    .catch((err) => {
-      console.log(err);
-      res.send({ message: "Votre ajout ne s'est pas bien passé" });
-    });
-});
+app.post("/reservation", reservation);
 app.listen(port, () => {
   console.log(
     `Application exemple à l'écoute sur le port http://localhost:${port}/ !`

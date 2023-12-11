@@ -33,6 +33,22 @@ router.get("/carddom", (req, res) => {
         res.json({"message" : "Error" + err.sqlMessage})
     });
 });
+router.get("/names", (req, res) => {
+    escapesService.fetchEscapeNames().then(names => {
+        res.status(200).json(names); // Renvoie les noms des escape games en tant que réponse JSON
+    }).catch(err => {
+        console.error("Oops...", err);
+        res.status(500).json({"message": "Error" + err.sqlMessage}); // En cas d'erreur, renvoie un message d'erreur avec le statut HTTP 500
+    });
+});
+router.get("/namesdom", (req, res) => {
+    escapesService.fetchEscapeNamesDom().then(names => {
+        res.status(200).json(names); // Renvoie les noms des escape games en tant que réponse JSON
+    }).catch(err => {
+        console.error("Oops...", err);
+        res.status(500).json({"message": "Error" + err.sqlMessage}); // En cas d'erreur, renvoie un message d'erreur avec le statut HTTP 500
+    });
+});
 
 router.get("/escapesdetails/:id_escape", (req, res) => {
     escapesService.fetchEscapesById(req.params.id_escape).then(result => {

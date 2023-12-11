@@ -16,9 +16,19 @@ function fetchEscapesById(id_escape) {
   return axios.get(`http://127.0.0.1:3000/escapes/escapesdetails/` + id_escape);
 }
 
-export default {
-  fetchEscapes,
-  fetchEscapesCard,
-  fetchEscapesCardDom,
-  fetchEscapesById,
+  function fetchEscapeNames() {
+      return axios.get("http://127.0.0.1:3000/escapes/names");
+    }
+  function fetchEscapeNamesDom() {
+      return axios.get("http://127.0.0.1:3000/escapes/namesdom");
+    }
+
+export default { 
+    fetchEscapes, 
+    fetchEscapesCard,
+    fetchEscapesCardDom,
+    fetchEscapesById,
+    fetchEscapeNames,
+    fetchEscapeNamesDom
+
 };

@@ -8,6 +8,7 @@ import Connexion from "../Pages/Connexion";
 import AuthContext from "../Components/AuthContext";
 import Auth from "../Services/Auth";
 
+
 function NavBar() {
   const [isActive, setIsActive] = useState(false);
   const { isAuthenticated, setIsAuthenticated, user } = useContext(AuthContext);
@@ -33,6 +34,7 @@ function NavBar() {
               setIsActive(!isActive);
             }}
 
+
           />
           <Link to={"/"}>
             <img
@@ -48,7 +50,6 @@ function NavBar() {
             </Link>
           </> :
             <button className="lien_nav" onClick={()=>{setIsAuthenticated(false); Auth.logout()}}>Déconnexion</button>
-
           }
 
           <Link>

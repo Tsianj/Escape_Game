@@ -3,7 +3,9 @@ const galerieService = require("../services/galerieService");
 const router = express.Router();
 
 
-router.get("/", (req, res) => {
+/*Ce sont des routes pour des pages d'acceuil (de présentation) comme dans scolarité*/ 
+router.get("/card", (req, res) => {
+
     galerieService.fetchGalerie().then(result => {
         res.status(200)
         res.json(result);
