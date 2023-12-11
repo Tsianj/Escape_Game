@@ -7,6 +7,7 @@ import Reservation from './Pages/Reservation';
 import HomePage from "./Pages/HomePage";
 import AuthContext from './Components/AuthContext';
 import Auth from './Services/Auth';
+import EscapeDetail from "./Pages/EscapeDetail";
 
 Auth.setup();
 
@@ -25,6 +26,7 @@ function App() {
           <Route path={'/'} element={<HomePage />} />
           <Route path={'/connexion'} element={<Connexion />} />
           <Route path={'/reservation'} element={<Reservation />} />
+          <Route path={'/escapesdetails/:id'} element={<EscapeDetail />} />
         </Routes>
       </BrowserRouter>
     </AuthContext.Provider>

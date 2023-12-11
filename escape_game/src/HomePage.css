@@ -77,6 +77,15 @@ h4 {
     margin-left: 20px;
     margin-right: 20px;
   }
+
+  .escape-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+  }
+
 }
 
 .block_card {
@@ -88,14 +97,12 @@ h4 {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 70px;
+  margin-bottom: 10px;
 }
 
 .card {
-  width: 250px;
-  height: 300px;
   display: flex;
-  margin: 25px auto 25px auto;
+  margin: 20px auto 15px;
   text-align: center;
 }
 
@@ -111,3 +118,4 @@ h4 {
   margin-top: -10px;
   margin-bottom: 10px;
 }
+
