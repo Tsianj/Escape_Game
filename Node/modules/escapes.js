@@ -50,5 +50,15 @@ router.get("/namesdom", (req, res) => {
     });
 });
 
+router.get("/escapesdetails/:id_escape", (req, res) => {
+    escapesService.fetchEscapesById(req.params.id_escape).then(result => {
+        res.status(200)
+        res.json(result[0]);
+    }).catch(err => {
+        console.error("Oops...", err);
+        res.json({"message" : "Error" + err.sqlMessage})
+    });
+});
+
 
 module.exports = router;

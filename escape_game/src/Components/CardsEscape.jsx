@@ -1,16 +1,17 @@
 import Card from "react-bootstrap/Card";
-import React from "react";
 import { Link } from "react-router-dom";
+import React from "react";
 
 
 const Cards = ({ escapes }) => {
+
 
   return (
     <>
     <div className="card">
       <Card>
-        <Link to={"/escapes/details"} state={escapes}>
-          <Card style={{ width: "18rem" }}>
+        <Link to={`/escapesdetails/` + escapes.id_escape} state={escapes} >
+          <Card>
             <Card.Body>
               <Card.Title className="title_card">{escapes.nom_escapes}</Card.Title>
               <Card.Img className="image" variant="top" src={escapes.url} />
