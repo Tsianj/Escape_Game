@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import LogoFcb from "../Assets/icons8-logo-facebook-50.png";
 import LogoInsta from "../Assets/icons8-logo-instagram-50.png";
 import MenuBurger from "../Assets/icons8-menu-64.png";
-import Connexion from "../Pages/Connexion";
 
 function NavBar() {
   const [isActive, setIsActive] = useState(false);
@@ -31,13 +30,13 @@ function NavBar() {
               setIsActive(!isActive);
             }}
           />        
-          <img
+          <Link to={"/"}><img
           src={Logo}
           id="logo"
           width={"120px"}
           alt="Logo"
-          placeholder="Logo_escape_game"
-        />
+          placeholder="Logo_escape_game"/>
+          </Link>
           <Link to={"/connexion"}>
             <button className="lien_nav">Connexion</button>
           </Link>

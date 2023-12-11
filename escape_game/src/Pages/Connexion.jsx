@@ -3,10 +3,12 @@ import Auth from "../Services/Auth";
 import AuthContext from "../Components/AuthContext";
 import "../Connexion.css";
 import utilisateurService from "../Services/utilisateurService";
+import { useNavigate } from "react-router-dom";
 
 const Connexion = () => {
   const [isActive, setIsActive] = useState(false);
   const [utilisateur, setUtilisateur] = useState({});
+  const navigate = useNavigate();
   const { setUser, setIsAuthenticated } = useContext(AuthContext);
   const handleChange = (event) => {
     const { name, value } = event.currentTarget;
@@ -29,6 +31,9 @@ const Connexion = () => {
       setUser(response.data);
       setIsAuthenticated(true);
       Auth.setUser(JSON.stringify(response.data));
+      setTimeout(() => {
+        navigate("/");
+      }, 800);
     } catch (e) {
       console.log(e);
     }

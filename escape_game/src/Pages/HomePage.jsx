@@ -1,17 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import CardEscape from "../Components/CardsEscape";
 import CardDom from "../Components/CardsDom";
 import Escapes from "../Services/escapesService";
+import AuthContext from "../Components/AuthContext";
 import "../HomePage.css";
 
 const HomePage = () => {
   const [escp, setEscp] = useState([]);
-
+  const { isAuthenticated, setIsAuthenticated, user } = useContext(AuthContext);
   const fetchEscapesCard = async () => {
     try {
-      const response = await Escapes.fetchEscapesCard();
-      setEscp(response.data.results);
-      console.log(response.data.results)
+      await Escapes.fetchEscapesCard().then((response)=>setEscp(response.data));
     } catch (e) {
       console.log(e);
     }
@@ -21,7 +20,8 @@ const HomePage = () => {
     fetchEscapesCard();
   }, []);
 
-  return (
+  return (   
+     
     <body>
       <div className="homepage">
         <h1>L'univers des escapes games</h1>
@@ -44,7 +44,7 @@ const HomePage = () => {
         <div className="card-container"></div>
         <div className="escape-container">
           {escp.map((e) => {
-            return <CardEscape key={escp.id_escape} escp={e} />;
+            return <CardEscape key={escp.id_escape} escapes={e} />;
           })}
         </div>
 

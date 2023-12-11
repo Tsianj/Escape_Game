@@ -16,3 +16,5 @@ router.post("/", (req, res) => {
         res.send({ message: "Votre ajout ne s'est pas bien passé" });
       });
   });
+
+module.exports = router;
