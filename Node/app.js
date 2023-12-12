@@ -2,13 +2,10 @@ const express = require("express");
 const utilisateur = require("./modules/utilisateur");
 const escapes = require("./modules/escapes");
 const galerie = require("./modules/galerie");
+const commentaire = require("./modules/commentaires");
 const reservation = require("./modules/reservation");
 const utilisateurService = require("./services/utilisateurService");
-<<<<<<< HEAD
-const reservationService = require("./services/reservationService");
-const galerieService = require("./services/galerieService");
-=======
->>>>>>> 86b11a86e62d606b46bba0c432d9d71bbd9646f6
+const commentaireService = require("./services/commentairesService");
 const cors = require("cors");
 const app = express();
 const port = 3000;
@@ -49,6 +46,18 @@ app.post("/connexion", (req, res) => {
 });
 app.use("/galerie", galerie);
 app.use("/utilisateur", utilisateur);
+app.use("/commentaire", commentaire);
+app.post("/commentaire", (req, res) => {
+  let data = req.body;
+  commentaireService.addCommentaire(data).then((result) => {
+      res.status(201);
+      res.json(result[0]);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.send({ message: "Votre ajout ne s'est pas bien passé" });
+    });
+});
 app.post("/reservation", reservation);
 app.listen(port, () => {
   console.log(

@@ -11,5 +11,5 @@ const fetchGalerie = () => {
 }
 
 module.exports = {
-    fetchGalerie, 
+    fetchGalerie
 };

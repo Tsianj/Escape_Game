@@ -7,10 +7,6 @@ import MenuBurger from "../Assets/icons8-menu-64.png";
 import Connexion from "../Pages/Connexion";
 import AuthContext from "../Components/AuthContext";
 import Auth from "../Services/Auth";
-<<<<<<< HEAD
-=======
-
->>>>>>> 86b11a86e62d606b46bba0c432d9d71bbd9646f6
 
 function NavBar() {
   const [isActive, setIsActive] = useState(false);
@@ -36,10 +32,6 @@ function NavBar() {
             onClick={() => {
               setIsActive(!isActive);
             }}
-<<<<<<< HEAD
-=======
-
->>>>>>> 86b11a86e62d606b46bba0c432d9d71bbd9646f6
 
           />
           <Link to={"/"}>
@@ -58,18 +50,17 @@ function NavBar() {
             <button className="lien_nav" onClick={()=>{setIsAuthenticated(false); Auth.logout()}}>Déconnexion</button>
           }
 
-          <Link>
+          <Link to={"/profil"}>
             <button className="lien_nav">Profil</button>
           </Link>
           <hr />
-
-          <Link>
+          <Link to={"/escapes"}>
             <button className="lien_nav">Nos Escapes</button>
           </Link>
-          <Link>
-            <button className="lien_nav">Nos Escapes à domicile</button>
+          <Link to={"/galerie"}> 
+            <button className="lien_nav">Galerie</button>
           </Link>
-          <Link>
+          <Link to={"/minijeux"}>
             <button className="lien_nav">Mini-jeux</button>
           </Link>
           <Link to={"/reservation"}>

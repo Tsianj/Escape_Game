@@ -4,6 +4,8 @@ import { useState } from "react";
 import NavBar from "./Components/Navbar";
 import Connexion from './Pages/Connexion';
 import Reservation from './Pages/Reservation';
+import Galerie from './Pages/Galerie';
+import MiniJeux from './Pages/MiniJeux';
 import HomePage from "./Pages/HomePage";
 import AuthContext from './Components/AuthContext';
 import Auth from './Services/Auth';
@@ -25,8 +27,10 @@ function App() {
         <Routes>
           <Route path={'/'} element={<HomePage />} />
           <Route path={'/connexion'} element={<Connexion />} />
+          <Route path={'/escapesdetails/:id'} element={<EscapeDetail />} />         
+          <Route path={'/galerie'} element={<Galerie />} /> 
+          <Route path={'/minijeux'} element={<MiniJeux />} /> 
           <Route path={'/reservation'} element={<Reservation />} />
-          <Route path={'/escapesdetails/:id'} element={<EscapeDetail />} />
         </Routes>
       </BrowserRouter>
     </AuthContext.Provider>

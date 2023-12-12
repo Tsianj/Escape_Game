@@ -1,7 +1,15 @@
 import axios from 'axios';
 
 function fetchCommentaires() {
-    return axios.get('http://127.0.0.1:3000/commentaires');
+    return axios.get('http://127.0.0.1:3000/commentaire');
 }
 
-export default fetchCommentaires;
+function addCommentaires(comm){
+    return axios.post("http://127.0.0.1:3000/commentaire", comm, {
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+}
+
+export default {fetchCommentaires, addCommentaires};

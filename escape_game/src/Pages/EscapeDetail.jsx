@@ -12,7 +12,7 @@ const EscapeDetail = () => {
 
   const fetchEscapesCard = async () => {
     try {
-      await Escapes.fetchEscapesCard().then((response) => {
+      Escapes.fetchEscapesCard().then((response) => {
         setEscp(response.data);
       });
     } catch (e) {
