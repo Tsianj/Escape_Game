@@ -7,10 +7,6 @@ import MenuBurger from "../Assets/icons8-menu-64.png";
 import Connexion from "../Pages/Connexion";
 import AuthContext from "../Components/AuthContext";
 import Auth from "../Services/Auth";
-<<<<<<< HEAD
-=======
-
->>>>>>> 86b11a86e62d606b46bba0c432d9d71bbd9646f6
 
 function NavBar() {
   const [isActive, setIsActive] = useState(false);
@@ -36,10 +32,6 @@ function NavBar() {
             onClick={() => {
               setIsActive(!isActive);
             }}
-<<<<<<< HEAD
-=======
-
->>>>>>> 86b11a86e62d606b46bba0c432d9d71bbd9646f6
 
           />
           <Link to={"/"}>
