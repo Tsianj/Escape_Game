@@ -5,6 +5,7 @@ import "../Connexion.css";
 import utilisateurService from "../Services/utilisateurService";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+
 const Auth0 = new Auth();
 const Connexion = () => {
   const [isActive, setIsActive] = useState(false);
@@ -15,7 +16,6 @@ const Connexion = () => {
     const { name, value } = event.currentTarget;
     setUtilisateur({ ...utilisateur, [name]: value });
   };
-
   const handleAdd = () => {
     try {
       const response = utilisateurService.addUtilisateur(utilisateur);
@@ -25,7 +25,6 @@ const Connexion = () => {
     }
     console.log(utilisateur);
   };
-
   const handleConn = async (e) => {
     e.preventDefault();
     try {

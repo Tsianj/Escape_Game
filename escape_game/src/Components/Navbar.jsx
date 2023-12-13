@@ -8,6 +8,7 @@ import AuthContext from "../Components/AuthContext";
 import Auth from "../Services/Auth";
 import { toast } from "react-toastify";
 
+
 function NavBar() {
   const Auth0 = new Auth();
   const [isActive, setIsActive] = useState(false);

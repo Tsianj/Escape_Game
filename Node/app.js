@@ -117,10 +117,13 @@ app.post("/connexion", (req, res) => {
       console.error("Oops...", err);
     });
 });
-/*Route SECURISE pour créer une réservation*/ 
-app.post("/reservation", checkTokenMiddleware, reservation);
 
+/*Route SECURISE pour créer une réservation*/ 
+app.use("/reservation", checkTokenMiddleware, reservation);
 /*route API (non fonctionnel PB: token */ 
+app.use("/galerie", galerie);
+app.use("/utilisateur", utilisateur);
+
 app.listen(port, () => {
   console.log(
     `Application exemple à l'écoute sur le port http://127.0.0.1:${port}/ !`
