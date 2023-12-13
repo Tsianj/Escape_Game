@@ -1,17 +1,12 @@
 import React, { useEffect, useState, useContext } from "react";
 import CardEscape from "../Components/CardsEscape";
-import CardDom from "../Components/CardsDom";
 import Escapes from "../Services/escapesService";
 import AuthContext from "../Components/AuthContext";
 import "../HomePage.css";
 
 const HomePage = () => {
   const [escp, setEscp] = useState([]);
-<<<<<<< HEAD
   const { isAuthenticated, setIsAuthenticated, user } = useContext(AuthContext);
-=======
-  const { isAuthenticated, setIsAuthenticated, user } = useContext(AuthContext); 
->>>>>>> 86b11a86e62d606b46bba0c432d9d71bbd9646f6
   const fetchEscapesCard = async () => {
     try {
       await Escapes.fetchEscapesCard().then((response) => {
@@ -21,17 +16,15 @@ const HomePage = () => {
       console.log(e);
     }
   };
+
   const [escpdom, setEscpdom] = useState([]);
+
   const fetchEscapesCardDom = async () => {
     try {
       await Escapes.fetchEscapesCardDom().then((response) => {
         setEscpdom(response.data);
       });
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 86b11a86e62d606b46bba0c432d9d71bbd9646f6
     } catch (e) {
       console.log(e);
     }
@@ -59,31 +52,12 @@ const HomePage = () => {
         </div>
 
 
-<<<<<<< HEAD
 
         <div className="card-container"></div>
         <div className="escape-container">
           {escp.map((e) => {
             return <CardEscape key={escp.id_escape} escapes={e} />;
           })}
-=======
-        <div className="block_card">
-          <div className="titre">
-            <h3>Escape Game</h3>
-            <h4>Sur place</h4>
-          </div>{" "}
-          <div className="escape-container">
-            {escp.map((e) => {
-              return <CardEscape key={escp.id_escape} escapes={e} />;
-            })}
-          </div>
-          <h4>Domicile</h4>
-          <div className="escape-container">
-            {escpdom.map((e) => {
-              return <CardDom key={escpdom.id_escape} escapesdom={e} />;
-            })}
-          </div>
->>>>>>> 86b11a86e62d606b46bba0c432d9d71bbd9646f6
         </div>
 
         <div className="titre">

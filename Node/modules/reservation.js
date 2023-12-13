@@ -17,9 +17,4 @@ router.post("/", (req, res) => {
 });
 
 
-<<<<<<< HEAD
   module.exports = router;
-=======
-module.exports = router;
-
->>>>>>> 86b11a86e62d606b46bba0c432d9d71bbd9646f6

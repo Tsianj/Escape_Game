@@ -1,8 +1,8 @@
 const conn = require("./database");
 
-const fetchUtilisateur = () => {
+const fetchUtilisateurById = (user) => {
     return new Promise((resolve, reject) => {
-        let sql = `SELECT * FROM utilisateur;`;
+        let sql = `SELECT * FROM utilisateur WHERE utilisateur.id_uti=`+ user;
         let query = conn.query(sql, (err, result, field) => {
             if(err) return reject(err);
             resolve(result);
@@ -30,7 +30,7 @@ const connUtilisateur = (utilisateur) => {
 }
 
 module.exports = {
-    fetchUtilisateur, 
+    fetchUtilisateurById, 
     addUtilisateur,
     connUtilisateur
 };

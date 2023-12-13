@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-function fetchUtilisateur() {
-    return axios.get('http://127.0.0.1:3000/utilisateur');
+function fetchUtilisateurById(user) {
+    return axios.get('http://127.0.0.1:3000/utilisateur/' + user); 
 }
 
 function addUtilisateur(utilisateur){
@@ -18,7 +18,7 @@ function loginUtilisateur(utilisateur) {
 }
 
 export default {
-    fetchUtilisateur, 
+    fetchUtilisateurById, 
     addUtilisateur,
     loginUtilisateur
  };
