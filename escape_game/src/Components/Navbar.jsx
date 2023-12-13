@@ -8,7 +8,6 @@ import AuthContext from "../Components/AuthContext";
 import Auth from "../Services/Auth";
 import { toast } from "react-toastify";
 
-
 function NavBar() {
   const Auth0 = new Auth();
   const [isActive, setIsActive] = useState(false);
@@ -46,6 +45,7 @@ function NavBar() {
             onClick={() => {
               setIsActive(!isActive);
             }}
+
           />
           <Link to={"/"}>
             <img
@@ -67,18 +67,20 @@ function NavBar() {
             <button className="lien_nav">Profil</button>
           </Link>
           <hr />
-
-          <Link>
+          <Link to={"/escapes"}>
             <button className="lien_nav">Nos Escapes</button>
           </Link>
-          <Link>
-            <button className="lien_nav">Nos Escapes à domicile</button>
+          <Link to={"/galerie"}> 
+            <button className="lien_nav">Galerie</button>
           </Link>
-          <Link>
+          <Link to={"/minijeux"}>
             <button className="lien_nav">Mini-jeux</button>
           </Link>
           <Link to={"/reservation"}>
             <button className="lien_nav">Réservation</button>
+          </Link>
+          <Link to={"/contact"}>
+            <button className="lien_nav">Contact</button>
           </Link>
           <div className="icon-reseau">
             <Link to={"https://www.facebook.com"} target="_blank">

@@ -7,10 +7,11 @@ import "../HomePage.css";
 
 const HomePage = () => {
   const [escp, setEscp] = useState([]);
-  const { isAuthenticated, setIsAuthenticated, user } = useContext(AuthContext);
+  const { isAuthenticated, setIsAuthenticated, user } = useContext(AuthContext); 
   const fetchEscapesCard = async () => {
     try {
       await Escapes.fetchEscapesCard().then((response) => {
+        console.log(response)
         setEscp(response.data);
       });
     } catch (e) {

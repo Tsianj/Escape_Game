@@ -85,7 +85,6 @@ h4 {
     justify-content: center;
     margin-bottom: 10px;
   }
-
 }
 
 .block_card {
@@ -106,6 +105,10 @@ h4 {
   text-align: center;
 }
 
+.image:hover {
+  transform: scale(1.1);
+}
+
 .image {
   width: 200px;
   height: 300px;
@@ -118,4 +121,3 @@ h4 {
   margin-top: -10px;
   margin-bottom: 10px;
 }
-
