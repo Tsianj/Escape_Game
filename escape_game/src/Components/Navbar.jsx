@@ -66,6 +66,9 @@ function NavBar() {
           <Link to={"/reservation"}>
             <button className="lien_nav">Réservation</button>
           </Link>
+          <Link to={"/contact"}>
+            <button className="lien_nav">Contact</button>
+          </Link>
           <div className="icon-reseau">
             <Link to={"https://www.facebook.com"} target="_blank">
               <img

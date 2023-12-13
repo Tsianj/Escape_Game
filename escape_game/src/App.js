@@ -4,6 +4,7 @@ import { useState } from "react";
 import NavBar from "./Components/Navbar";
 import Connexion from './Pages/Connexion';
 import Reservation from './Pages/Reservation';
+import Contact from './Pages/Contact';
 import Galerie from './Pages/Galerie';
 import MiniJeux from './Pages/MiniJeux';
 import HomePage from "./Pages/HomePage";
@@ -31,6 +32,7 @@ function App() {
           <Route path={'/galerie'} element={<Galerie />} /> 
           <Route path={'/minijeux'} element={<MiniJeux />} /> 
           <Route path={'/reservation'} element={<Reservation />} />
+          <Route path={'/contact'} element={<Contact />} />
         </Routes>
       </BrowserRouter>
     </AuthContext.Provider>

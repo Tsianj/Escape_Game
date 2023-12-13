@@ -38,6 +38,8 @@
 .avis {
   background-image: url(./Assets/fond.svg);
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   margin-left: 80px;
   margin-right: 100px;
 }
@@ -53,7 +55,47 @@
   color: black;
   margin: 10px 0px;
   padding: 10px;
-height: 150px;
+  height: 150px;
+}
+
+.galerie form {
+  background-image: url(./Assets/fond.svg);
+  margin-left: 80px;
+  margin-right: 100px;
+  margin-bottom: 50px;
+  display: flex;
+  flex-direction: column;
+}
+
+.galerie form h1 {
+  margin: 10px;
+  padding: 20px;
+}
+
+.galerie input {
+  margin: 20px;
+  padding: 10px;
+}
+
+.galerie .avis-text {
+  margin: 20px;
+  padding: 10px;
+  min-height: 100px;
+}
+
+.galerie form button {
+  /* Couleurs et styles de bouton */
+  background-color: #22000e;
+  color: #fff;
+  font-size: 12px;
+  margin: 20px;
+  padding: 10px 45px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  cursor: pointer;
 }
 
 @media (max-width: 900px) {

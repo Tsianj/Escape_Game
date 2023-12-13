@@ -38,28 +38,24 @@ const GaleriePhoto = () => {
     fetchCommentaire();
   }, []);
 
-
   // Ajout commentaire
 
   const [ajoutAvis, setAjoutAvis] = useState({});
 
   const handleChange = (event) => {
-      const { name, value } = event.currentTarget;
-      setAjoutAvis({ ...ajoutAvis, [name]: value });
-    };
+    const { name, value } = event.currentTarget;
+    setAjoutAvis({ ...ajoutAvis, [name]: value });
+  };
 
-    const handleAdd = (event) => {
-      try {
-        const response = Commentaire.addCommentaires(ajoutAvis);
-        event.preventDefault();
-      } catch (e) {
-    
-        console.log(e);
-      }
-      console.log(ajoutAvis);
-    };
-
-
+  const handleAdd = (event) => {
+    try {
+      const response = Commentaire.addCommentaires(ajoutAvis);
+      event.preventDefault();
+    } catch (e) {
+      console.log(e);
+    }
+    console.log(ajoutAvis);
+  };
 
   return (
     <body>
@@ -83,42 +79,42 @@ const GaleriePhoto = () => {
           </div>
         </div>
 
-
         <form>
-              <h1>Nouveau Commentaire</h1>
-              {/* <!-- Champs pour entrer le nom, l'email et le mot de passe --> */}
-              <input
-                type="number"
-                name="note"
-                placeholder="Note"
-                value={Commentaire.note}
-                onChange={handleChange}
-                required
-              />
-              <input
-                type="text"
-                name="avis"
-                placeholder="Avis"
-                value={Commentaire.avis}
-                onChange={handleChange}
-                required
-              />
-              <input
-                type="text"
-                name="id_escape"
-                placeholder="Escape"
-                value={Commentaire.id_escape}
-                onChange={handleChange}
-                required
-              />
-              
-              <button onClick={handleAdd}>Envoyer mon commentaire</button>
-            </form>
+          <h1>Nouveau Commentaire</h1>
+          {/* <!-- Champs pour faire un nouveau commentaire --> */}
+          <input
+            type="text"
+            name="id_escape"
+            placeholder="Escape"
+            value={Commentaire.id_escape}
+            onChange={handleChange}
+            required
+          />
+          <input
+            type="number"
+            name="note"
+            min="0"
+            max="10"
+            step="1"
+            placeholder="Note"
+            value={Commentaire.note}
+            onChange={handleChange}
+            required
+          />
+          <textarea
+            className="avis-text"
+            rows="5"
+            cols="2"
+            name="avis"
+            placeholder="Avis"
+            value={Commentaire.avis}
+            onChange={handleChange}
+            required
+          ></textarea>
 
-
+          <button onClick={handleAdd}>Envoyer</button>
+        </form>
       </div>
-
-
     </body>
   );
 };
