@@ -1,6 +1,5 @@
 import React, { useEffect, useState, useContext } from "react";
 import CardEscape from "../Components/CardsEscape";
-import CardDom from "../Components/CardsDom";
 import Escapes from "../Services/escapesService";
 import AuthContext from "../Components/AuthContext";
 import "../HomePage.css";
@@ -8,7 +7,6 @@ import "../HomePage.css";
 const HomePage = () => {
   const [escp, setEscp] = useState([]);
   const { isAuthenticated, setIsAuthenticated, user } = useContext(AuthContext);
-
   const fetchEscapesCard = async () => {
     try {
       await Escapes.fetchEscapesCard().then((response) => {
@@ -24,7 +22,6 @@ const HomePage = () => {
       await Escapes.fetchEscapesCardDom().then((response) => {
         setEscpdom(response.data);
       });
-
     } catch (e) {
       console.log(e);
     }
@@ -36,7 +33,6 @@ const HomePage = () => {
   }, []);
 
   return (   
-     
     <body>
       <div className="homepage">
         <h1>L'univers des escapes games</h1>
@@ -50,7 +46,6 @@ const HomePage = () => {
             participants dans des univers extraordinaires
           </p>
         </div>
-
         <div className="block_card">
           <div className="titre">
             <h3>Escape Game</h3>

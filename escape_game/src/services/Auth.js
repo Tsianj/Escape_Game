@@ -1,38 +1,71 @@
-function setup() {
-    const user = window.localStorage.getItem("user");
-    if (user) {
-        setUser(user)
+import axios from "axios";
+import { jwtDecode } from "jwt-decode";
+export class Auth {
+  constructor() {}
+
+  authenticate(utilisateur) {
+    return axios
+      .post("http://127.0.0.1:3000/connexion", utilisateur, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      })
+      .then((response) => response.data)
+      .then((data) => {
+        //Je stock le token dans le localeStorage
+        window.localStorage.setItem("authToken", data.access_token);
+        //On previent axios qu'on a maintenant un header sur toutes nos futures requètes http
+        this.setAxiosToken(data.access_token);
+        return data;
+      });
+  }
+
+  logout() {
+    window.localStorage.removeItem("authToken");
+    delete axios.defaults.headers["Authorization"];
+  }
+
+  setAxiosToken(token) {
+    axios.defaults.headers["Authorization"] = "Bearer " + token;
+  }
+
+  setup() {
+    const token = window.localStorage.getItem("authToken");
+    if (token) {
+      const { exp: expiration } = jwtDecode(token);
+      if (expiration * 1000 > new Date().getTime()) {
+        this.setAxiosToken(token);
+      } else {
+        this.logout();
+      }
     } else {
-        logout();
+      this.logout();
     }
-}
-function setUser(user){
-    window.localStorage.setItem("user", user)
-}
-function logout() {
-    window.localStorage.removeItem("user");
-}
-function getUser() {
-    const user = window.localStorage.getItem("user");
-    if (user) {
-       return user;
+  }
+
+  isAuthenticated() {
+    const token = window.localStorage.getItem("authToken");
+    if (token) {
+      const { exp: expiration } = jwtDecode(token);
+      if (expiration * 1000 > new Date().getTime()) {
+        return true;
+      }
+      return false;
     } else {
-        return null
+      return false;
     }
-}
-function isAuthenticated() {
-    const user = window.localStorage.getItem("user");
-    if (user) {
-       return true;
+  }
+
+  getUser() {
+    const token = window.localStorage.getItem("authToken");
+    if (token) {
+      const { user } = jwtDecode(token);
+      return user;
     } else {
-        return false
+      return null;
     }
+  }
 }
 
-export default {
-    setup,
-    logout,
-    getUser,
-    setUser,
-    isAuthenticated
-}
+export default Auth;
