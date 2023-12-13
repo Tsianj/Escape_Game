@@ -10,7 +10,7 @@ const Cards = ({ escapes }) => {
     <>
     <div className="card">
       <Card>
-        <Link to={`/escapesdetails/` + escapes.id_escape} state={escapes} >
+        <Link to={`/escapesdetails/`+escapes.id_escape} state={escapes}>
           <Card>
             <Card.Body>
               <Card.Title className="title_card">{escapes.nom_escapes}</Card.Title>
