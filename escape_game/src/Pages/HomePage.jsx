@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useContext } from "react";
 import CardEscape from "../Components/CardsEscape";
+import CardDom from "../Components/CardsDom";
 import Escapes from "../Services/escapesService";
 import AuthContext from "../Components/AuthContext";
 import "../HomePage.css";
