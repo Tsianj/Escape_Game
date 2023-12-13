@@ -4,13 +4,26 @@ import { Link } from "react-router-dom";
 import LogoFcb from "../Assets/icons8-logo-facebook-50.png";
 import LogoInsta from "../Assets/icons8-logo-instagram-50.png";
 import MenuBurger from "../Assets/icons8-menu-64.png";
-import Connexion from "../Pages/Connexion";
 import AuthContext from "../Components/AuthContext";
 import Auth from "../Services/Auth";
+import { toast } from "react-toastify";
 
 function NavBar() {
+  const Auth0 = new Auth();
   const [isActive, setIsActive] = useState(false);
   const { isAuthenticated, setIsAuthenticated, user } = useContext(AuthContext);
+  const handleDeco = async () => {
+    try {
+      setIsAuthenticated(false); 
+      Auth0.logout();
+      toast.error(
+          user.prenom_uti +
+          "s'est déconnecté"
+      );
+    } catch (e) {
+      console.log(e);
+    }
+  };
 
   return (
     <>
@@ -47,7 +60,7 @@ function NavBar() {
               <button className="lien_nav">Connexion</button>
             </Link>
           </> :
-            <button className="lien_nav" onClick={()=>{setIsAuthenticated(false); Auth.logout()}}>Déconnexion</button>
+            <button className="lien_nav" onClick={handleDeco}>Déconnexion</button>
           }
 
           <Link to={"/profil"}>

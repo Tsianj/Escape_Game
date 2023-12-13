@@ -3,8 +3,9 @@ const utilisateurService = require("../services/utilisateurService");
 const router = express.Router();
 
 /*Ce sont des routes pour des pages d'acceuil (de présentation) comme dans scolarité*/ 
-router.get("/", (req, res) => {
-    utilisateurService.fetchUtilisateur().then(result => {
+router.get("/:user", (req, res) => {
+    const utilisateur = req.params.user;
+    utilisateurService.fetchUtilisateurById(utilisateur).then(result => {
         res.status(200)
         res.json(result);
     }).catch(err => {

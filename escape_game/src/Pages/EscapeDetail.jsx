@@ -51,6 +51,10 @@ const EscapeDetail = () => {
     fetchEscapesById();
   }, []);
 
+  function refreshPage() {
+    window.location.reload(false);
+  }
+
   return (
     <body>
       <div className="escape_detail">
@@ -80,13 +84,13 @@ const EscapeDetail = () => {
             <h3>Escape Game</h3>
             <h4>Sur place</h4>
           </div>{" "}
-          <div className="escape-container">
+          <div className="escape-container" onClick={refreshPage}>
             {escp.map((e) => {
               return <CardEscape key={escp.id_escape} escapes={e} />;
             })}
           </div>
           <h4>Domicile</h4>
-          <div className="escape-container">
+          <div className="escape-container" onClick={refreshPage}>
             {escpdom.map((e) => {
               return <CardDom key={escpdom.id_escape} escapesdom={e} />;
             })}

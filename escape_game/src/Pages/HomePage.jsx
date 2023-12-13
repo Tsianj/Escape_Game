@@ -24,7 +24,6 @@ const HomePage = () => {
       await Escapes.fetchEscapesCardDom().then((response) => {
         setEscpdom(response.data);
       });
-
     } catch (e) {
       console.log(e);
     }
@@ -36,7 +35,6 @@ const HomePage = () => {
   }, []);
 
   return (   
-     
     <body>
       <div className="homepage">
         <h1>L'univers des escapes games</h1>
@@ -50,8 +48,6 @@ const HomePage = () => {
             participants dans des univers extraordinaires
           </p>
         </div>
-
-
         <div className="block_card">
           <div className="titre">
             <h3>Escape Game</h3>
