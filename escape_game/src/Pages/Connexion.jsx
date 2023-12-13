@@ -4,7 +4,9 @@ import AuthContext from "../Components/AuthContext";
 import "../Connexion.css";
 import utilisateurService from "../Services/utilisateurService";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
+const Auth0 = new Auth();
 const Connexion = () => {
   const [isActive, setIsActive] = useState(false);
   const [utilisateur, setUtilisateur] = useState({});
@@ -14,27 +16,40 @@ const Connexion = () => {
     const { name, value } = event.currentTarget;
     setUtilisateur({ ...utilisateur, [name]: value });
   };
-
   const handleAdd = () => {
     try {
       const response = utilisateurService.addUtilisateur(utilisateur);
+      toast.success("Bienvenu" + response.data.prenom_uti);
     } catch (e) {
       console.log(e);
     }
     console.log(utilisateur);
   };
- 
   const handleConn = async (e) => {
     e.preventDefault();
     try {
-      const response = await utilisateurService.loginUtilisateur(utilisateur);
-      
-      setTimeout(()=>{
-        setUser(response.data);
-      setIsAuthenticated(true);
-      Auth.setUser(JSON.stringify(response.data));
+      const response = await Auth.signInWithEmailAndPassword(
+        utilisateur.mail_uti,
+        utilisateur.mdp_uti
+      );
+      console.log(response);
+      if (response.user) {
+        setUser(response.user);
+        setIsAuthenticated(true);
         navigate("/");
-      }, 800);
+      }
+    } catch (e) {
+      console.log(e);
+    }
+    try {
+      const response = await Auth0.authenticate(utilisateur);
+      toast.success("Bonjour vous êtes est connecté");
+      // setTimeout(() => {
+      // setUser(response.data);
+      setIsAuthenticated(true);
+      // Auth.setUser(JSON.stringify(response.data));
+      navigate("/");
+      // }, 800);
     } catch (e) {
       console.log(e);
     }
@@ -42,7 +57,6 @@ const Connexion = () => {
 
   return (
     <>
-
       <div className="body">
         <div
           className={isActive ? "container active" : "container"}
@@ -127,7 +141,9 @@ const Connexion = () => {
               />
               {/* <!-- Lien pour réinitialiser le mot de passe --> */}
               <a href="#">Mot de passe oublié</a>
-              <button type="submit" value="Se connecter" onClick={handleConn}>Se connecter</button>
+              <button type="submit" value="Se connecter" onClick={handleConn}>
+                Se connecter
+              </button>
             </form>
           </div>
           {/* <!-- Conteneur pour basculer entre les formulaires --> */}
