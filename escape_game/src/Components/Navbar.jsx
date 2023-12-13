@@ -61,11 +61,14 @@ function NavBar() {
             </Link>
           </> :
             <button className="lien_nav" onClick={handleDeco}>Déconnexion</button>
+          
           }
-
+          {isAuthenticated === false? <></>:
           <Link to={"/profil"}>
             <button className="lien_nav">Profil</button>
           </Link>
+          }
+          
           <hr />
           <Link to={"/escapes"}>
             <button className="lien_nav">Nos Escapes</button>
