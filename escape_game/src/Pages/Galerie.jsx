@@ -16,7 +16,7 @@ const GaleriePhoto = () => {
   const [ajoutAvis, setAjoutAvis] = useState({
     id_escape: "",
     note: 10,
-    avis: ""
+    avis: "",
   });
   const fetchGalerie = async () => {
     try {
@@ -64,7 +64,7 @@ const GaleriePhoto = () => {
           setAjoutAvis({
             id_escape: "",
             note: 10,
-            avis: ""
+            avis: "",
           }) 
       })
       .catch((err)=>toast.error('Erreur : votre message n\'a pas pu être envoyé'));
@@ -137,7 +137,7 @@ const GaleriePhoto = () => {
             onChange={handleChange}
             required
           ></textarea>
-
+          
           <button onClick={(event) =>{handleAdd(event)}}>Envoyer</button>
         </form>
       </div>
