@@ -9,7 +9,6 @@ import Galerie from './Pages/Galerie';
 import MiniJeux from './Pages/MiniJeux';
 import HomePage from "./Pages/HomePage";
 import AuthContext from "./Components/AuthContext";
-import Connexion from "./Pages/Connexion";
 import Auth from "./Services/Auth";
 import EscapeDetail from "./Pages/EscapeDetail";
 import Profil from "./Pages/Profil";

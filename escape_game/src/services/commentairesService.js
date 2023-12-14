@@ -4,8 +4,8 @@ function fetchCommentaires() {
     return axios.get('http://127.0.0.1:3000/commentaire');
 }
 
-function addCommentaires(comm){
-    return axios.post("http://127.0.0.1:3000/commentaire", comm, {
+function addCommentaires(user){
+    return axios.post("http://127.0.0.1:3000/commentaire", user, {
         headers: {
             'Content-Type': 'application/json'
         }
