@@ -139,7 +139,7 @@ const GaleriePhoto = () => {
             onChange={handleChange}
             required
           ></textarea>
-
+          
           <button onClick={(event) =>{handleAdd(event)}}>Envoyer</button>
         </form>
         }
