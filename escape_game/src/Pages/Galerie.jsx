@@ -16,7 +16,8 @@ const GaleriePhoto = () => {
   const [ajoutAvis, setAjoutAvis] = useState({
     id_escape: "",
     note: 10,
-    avis: ""
+    avis: "",
+    id_uti: user.id_uti
   });
   const fetchGalerie = async () => {
     try {
@@ -64,7 +65,8 @@ const GaleriePhoto = () => {
           setAjoutAvis({
             id_escape: "",
             note: 10,
-            avis: ""
+            avis: "",
+            id_uti: user.id_uti
           }) 
       })
       .catch((err)=>toast.error('Erreur : votre message n\'a pas pu être envoyé'));

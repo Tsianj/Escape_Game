@@ -83,8 +83,9 @@ app.use(
 app.use("/galerie", galerie);
 /*Route extraction utilisateur*/
 app.use("/utilisateur", utilisateur);
-/*Route extractionescapes*/ 
+/*Route extraction escapes*/ 
 app.use("/escapes", escapes);
+
 
 
 
