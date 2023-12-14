@@ -1,0 +1,15 @@
+.profil {
+    margin-left: 200px;
+    color: var(--color-font);
+  }
+
+.detail_profil{
+    background-image: url(./Assets/fond.svg);
+    margin: 20px;
+    margin-left: 80px;
+    margin-right: 100px;
+    padding: 40px;
+    display: block;
+    text-align: center;
+    font-size: 28px;
+}
