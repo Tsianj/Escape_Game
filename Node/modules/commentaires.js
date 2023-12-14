@@ -16,7 +16,7 @@ router.get("/", (req, res) => {
 
 router.post('/', (req, res) => {
     let data = req.body;
-    commentairesService.addCommentaire(data).then(result => {
+        commentairesService.addCommentaire(data).then(result => {
         res.status(201)
         res.json(data)
     }).catch(err => {

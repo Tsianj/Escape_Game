@@ -12,7 +12,7 @@ const fetchCommentaires = () => {
 
 const addCommentaire = (comm) => {
     return new Promise((resolve, reject) => {
-        let sql = `INSERT INTO commentaires(avis, note, id_escape) VALUES ('${comm.avis}', '${comm.note}', ${comm.id_escape})`;
+        let sql = `INSERT INTO commentaires(avis, note, id_escape, id_uti) VALUES ("${comm.avis}", '${comm.note}', '${comm.id_escape}', '${comm.id_uti}')`;
         let query = conn.query(sql, (err, result, field) => {
             if(err) return reject(err);
             resolve(result);
