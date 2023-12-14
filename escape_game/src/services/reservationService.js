@@ -7,5 +7,11 @@ function addReservation(reservation){
         }
     })
 }
+function getReservation(user){
+    return axios.post("http://127.0.0.1:3000/reservation" + user)
+}
 
-export default {addReservation};
+export default {
+    addReservation,
+    getReservation
+};  

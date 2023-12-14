@@ -49,8 +49,18 @@ router.post("/", async (req, res) => {
         });
     }
   }
+})
+  
+router.get("/", (req, res) => {
+  const utilisateur = req.params.user;
+  reservationService.fetchResa(utilisateur).then(result => {
+      res.status(200)
+      res.json(result);
+  }).catch(err => {
+      console.error("Oops...", err);
+      res.json({"message" : "Error" + err.sqlMessage})
+  });
 });
-
 
 module.exports = router;
 
