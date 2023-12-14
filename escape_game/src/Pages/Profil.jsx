@@ -1,6 +1,7 @@
 import React, {useContext, useEffect, useState} from 'react';
 import AuthContext from "../Components/AuthContext";
 import utilisateurService from "../Services/utilisateurService";
+import reservationService from '../Services/reservationService';
 import Auth from "../Services/Auth";
 import "..//Profil.css";
 
@@ -21,8 +22,22 @@ const Profil = () => {
             console.log(e);
         };
     }
+
+    const fetchResa =()  => {
+        try {
+             reservationService.fetchResa(user.id_uti)
+             .then((response) =>{
+                setUsers(response.data);
+                console.log(response.data);
+             });
+
+    }catch (e) {
+        console.log(e);
+    };
+
     useEffect(()=> {
-        fetchUtilisateurById()
+        fetchUtilisateurById(),
+        fetchResa();
     },[]);
     
 
@@ -37,6 +52,11 @@ const Profil = () => {
         <h4>Téléphone : </h4>{user.numero_tel}
         </div>
         </div>
+
+        {user.creneau};
+        {user.domicile};
+        {user.nb_participantr};
+
     </>;
-}
+}}
 export default Profil;

@@ -1,14 +1,24 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import Photo from "../Components/Photo";
 import Galerie from "../Services/galerieService";
 import Avis from "../Components/Avis";
 import Commentaire from "../Services/commentairesService";
 import AuthContext from "../Components/AuthContext";
 import "../Galerie.css";
+import escapesService from "../Services/escapesService";
+import { toast } from "react-toastify";
 
 const GaleriePhoto = () => {
+  const { user } = useContext(AuthContext);
   const [photo, setPhoto] = useState([]);
-
+  const [escapeNom, setEscapeNom] = useState([]);
+  const [avis, setAvis] = useState([]);
+  const [ajoutAvis, setAjoutAvis] = useState({
+    id_escape: "",
+    note: 10,
+    avis: "",
+    id_uti: user.id_uti
+  });
   const fetchGalerie = async () => {
     try {
       Galerie.fetchGalerie().then((response) => {
@@ -20,8 +30,6 @@ const GaleriePhoto = () => {
     }
   };
 
-  const [avis, setAvis] = useState([]);
-
   const fetchCommentaire = async () => {
     try {
       Commentaire.fetchCommentaires().then((response) => {
@@ -32,30 +40,45 @@ const GaleriePhoto = () => {
       console.log(e);
     }
   };
-
-  useEffect(() => {
-    fetchGalerie();
-    fetchCommentaire();
-  }, []);
+  const fetchEscapeNom = async () => {
+    try {
+      escapesService.fetchEscapes().then((response) => {
+        setEscapeNom(response.data);
+      });
+    } catch (e) {
+      console.log(e);
+    }
+  };
 
   // Ajout commentaire
-
-  const [ajoutAvis, setAjoutAvis] = useState({});
 
   const handleChange = (event) => {
     const { name, value } = event.currentTarget;
     setAjoutAvis({ ...ajoutAvis, [name]: value });
   };
-
   const handleAdd = (event) => {
     try {
-      const response = Commentaire.addCommentaires(ajoutAvis);
       event.preventDefault();
+      Commentaire.addCommentaires(ajoutAvis)
+      .then((res)=>{
+          toast.success("Votre message a été envoyé");
+          setAjoutAvis({
+            id_escape: "",
+            note: 10,
+            avis: "",
+            id_uti: user.id_uti
+          }) 
+      })
+      .catch((err)=>toast.error('Erreur : votre message n\'a pas pu être envoyé'));
     } catch (e) {
       console.log(e);
     }
-    console.log(ajoutAvis);
   };
+  useEffect(() => {
+    fetchGalerie();
+    fetchCommentaire();
+    fetchEscapeNom();
+  }, []);
 
   return (
     <body>
@@ -82,14 +105,19 @@ const GaleriePhoto = () => {
         <form>
           <h1>Nouveau Commentaire</h1>
           {/* <!-- Champs pour faire un nouveau commentaire --> */}
-          <input
-            type="text"
+          <select
             name="id_escape"
-            placeholder="Escape"
-            value={Commentaire.id_escape}
+            value={ajoutAvis.id_escape}
             onChange={handleChange}
             required
-          />
+          >
+            <option value="">Choisir un escape game</option>
+            {escapeNom.map((escapeGame) => (
+              <option key={escapeGame.id_escape} value={escapeGame.id_escape}>
+                {escapeGame.nom_escapes}
+              </option>
+            ))}
+          </select>
           <input
             type="number"
             name="note"
@@ -97,7 +125,7 @@ const GaleriePhoto = () => {
             max="10"
             step="1"
             placeholder="Note"
-            value={Commentaire.note}
+            value={ajoutAvis.note}
             onChange={handleChange}
             required
           />
@@ -107,12 +135,12 @@ const GaleriePhoto = () => {
             cols="2"
             name="avis"
             placeholder="Avis"
-            value={Commentaire.avis}
+            value={ajoutAvis.avis}
             onChange={handleChange}
             required
           ></textarea>
 
-          <button onClick={handleAdd}>Envoyer</button>
+          <button onClick={(event) =>{handleAdd(event)}}>Envoyer</button>
         </form>
       </div>
     </body>
