@@ -2,6 +2,8 @@ import React, {useContext, useEffect, useState} from 'react';
 import AuthContext from "../Components/AuthContext";
 import utilisateurService from "../Services/utilisateurService";
 import Auth from "../Services/Auth";
+import "..//Profil.css";
+
 
 const Profil = () => {
     const {user} = useContext(AuthContext);
@@ -26,11 +28,15 @@ const Profil = () => {
 
     console.log(user);
     return<>
-        {user.nom_uti};
-        {user.prenom_uti};
-        {user.mail_uti};
-        {user.adresse};
-        {user.numero_tel};
+    <div className="profil">
+        <div className='detail_profil'>
+        <h4>Nom : </h4> {user.nom_uti}
+        <h4>Prénom : </h4>{user.prenom_uti}
+        <h4>Email : </h4>{user.mail_uti}
+        <h4>Adresse : </h4>{user.adresse}
+        <h4>Téléphone : </h4>{user.numero_tel}
+        </div>
+        </div>
     </>;
 }
 export default Profil;
