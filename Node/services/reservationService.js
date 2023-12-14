@@ -13,6 +13,7 @@ const addResa = (reservation) => {
     });
   });
 };
+
 const countDisponibilities = (creneau, domicile) => {
   return new Promise((resolve, reject) => {
     let sql = `SELECT COUNT(creneau) as resa FROM reservation
@@ -23,6 +24,7 @@ const countDisponibilities = (creneau, domicile) => {
     });
   });
 };
+
 const countDisponibilitiesPlace = (creneau, domicile, escape) => {
   return new Promise((resolve, reject) => {
     let sql = `SELECT COUNT(creneau) as resa FROM reservation
@@ -33,8 +35,20 @@ const countDisponibilitiesPlace = (creneau, domicile, escape) => {
     });
   });
 };
+
+const fetchResa = () => {
+  return new Promise((resolve, reject) => {
+    let sql = `SELECT * FROM reservation;`;
+    conn.query(sql, (err, result, field) => {
+      if (err) return reject(err);
+      resolve(result);
+    });
+  });
+};
+
 module.exports = {
   addResa,
   countDisponibilities,
   countDisponibilitiesPlace,
+  fetchResa
 };
