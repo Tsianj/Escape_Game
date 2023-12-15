@@ -31,12 +31,9 @@ const Connexion = () => {
     try {
       const response = await Auth0.authenticate(utilisateur);
       toast.success("Voussa connecté");
-      // setTimeout(() => {
-      // setUser(response.data);
+      setUser(Auth0.getUser())
       setIsAuthenticated(true);
-      // Auth.setUser(JSON.stringify(response.data));
       navigate("/");
-      setUser(Auth0.getUser());      // }, 800);
     } catch (e) {
       console.log(e);
     }

@@ -34,7 +34,7 @@ function App() {
           <Route path={'/'} element={<HomePage />} />
           <Route path={'/connexion'} element={<Connexion />} />
           <Route path={'/escapesdetails/:id'} element={<EscapeDetail />} />
-            <Route path={"/profil"} element={<Profil />} />
+          <Route path={"/profil"} element={<Profil />} />
           <Route path={'/galerie'} element={<Galerie />} /> 
           <Route path={'/minijeux'} element={<MiniJeux />} /> 
           <Route path={'/reservation'} element={<Reservation />} />
