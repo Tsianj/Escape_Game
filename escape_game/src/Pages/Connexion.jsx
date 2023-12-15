@@ -30,7 +30,7 @@ const Connexion = () => {
     e.preventDefault();
     try {
       const response = await Auth0.authenticate(utilisateur);
-      toast.success("Bonjour voussa connecté");
+      toast.success("Voussa connecté");
       setUser(Auth0.getUser())
       setIsAuthenticated(true);
       navigate("/");

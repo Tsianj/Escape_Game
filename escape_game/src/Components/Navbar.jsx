@@ -20,7 +20,6 @@ function NavBar() {
       setIsAuthenticated(false); 
       Auth0.logout();
       setUser(null)
-
     } catch (e) {
       console.log(e);
     }
@@ -71,8 +70,8 @@ function NavBar() {
           }
           
           <hr />
-          <Link to={"/escapes"}>
-            <button className="lien_nav">Nos Escapes</button>
+          <Link to={"/"}>
+            <button className="lien_nav">Acceuil</button>
           </Link>
           <Link to={"/galerie"}> 
             <button className="lien_nav">Galerie</button>
