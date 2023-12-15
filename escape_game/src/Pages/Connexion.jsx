@@ -29,28 +29,11 @@ const Connexion = () => {
   const handleConn = async (e) => {
     e.preventDefault();
     try {
-      const response = await Auth.signInWithEmailAndPassword(
-        utilisateur.mail_uti,
-        utilisateur.mdp_uti
-      );
-      console.log(response);
-      if (response.user) {
-        setUser(response.user);
-        setIsAuthenticated(true);
-        navigate("/");
-      }
-    } catch (e) {
-      console.log(e);
-    }
-    try {
       const response = await Auth0.authenticate(utilisateur);
-      toast.success("Bonjour vous êtes est connecté");
-      // setTimeout(() => {
-      // setUser(response.data);
+      toast.success("Voussa connecté");
+      setUser(Auth0.getUser())
       setIsAuthenticated(true);
-      // Auth.setUser(JSON.stringify(response.data));
       navigate("/");
-      // }, 800);
     } catch (e) {
       console.log(e);
     }

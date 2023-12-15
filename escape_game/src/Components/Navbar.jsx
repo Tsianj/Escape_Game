@@ -11,15 +11,15 @@ import { toast } from "react-toastify";
 function NavBar() {
   const Auth0 = new Auth();
   const [isActive, setIsActive] = useState(false);
-  const { isAuthenticated, setIsAuthenticated, user } = useContext(AuthContext);
+  const { isAuthenticated, setIsAuthenticated, user, setUser } = useContext(AuthContext);
   const handleDeco = async () => {
     try {
+      toast.error(
+        "Voussa déconnecté"
+      );
       setIsAuthenticated(false); 
       Auth0.logout();
-      toast.error(
-          user.prenom_uti +
-          "s'est déconnecté"
-      );
+      setUser(null)
     } catch (e) {
       console.log(e);
     }

@@ -9,7 +9,7 @@ import escapesService from "../Services/escapesService";
 import { toast } from "react-toastify";
 
 const GaleriePhoto = () => {
-  const { user } = useContext(AuthContext);
+  const {  isAuthenticated, setIsAuthenticated, user } = useContext(AuthContext);
   const [photo, setPhoto] = useState([]);
   const [escapeNom, setEscapeNom] = useState([]);
   const [avis, setAvis] = useState([]);
@@ -101,7 +101,7 @@ const GaleriePhoto = () => {
             })}
           </div>
         </div>
-
+        {isAuthenticated === false? <></>:
         <form>
           <h1>Nouveau Commentaire</h1>
           {/* <!-- Champs pour faire un nouveau commentaire --> */}
@@ -139,9 +139,10 @@ const GaleriePhoto = () => {
             onChange={handleChange}
             required
           ></textarea>
-
+          
           <button onClick={(event) =>{handleAdd(event)}}>Envoyer</button>
         </form>
+        }
       </div>
     </body>
   );

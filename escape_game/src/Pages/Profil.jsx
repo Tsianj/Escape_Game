@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import AuthContext from "../Components/AuthContext";
 import utilisateurService from "../Services/utilisateurService";
-import reservationService from "../Services/reservationService";
 import Auth from "../Services/Auth";
 import "..//Profil.css";
 
@@ -30,12 +29,10 @@ const Profil = () => {
     } catch (e) {
       console.log(e);
     }
+    useEffect(()=> {
+        fetchUtilisateurById()
+    },[]);
 
-    useEffect(() => {
-      fetchUtilisateurById(), fetchResa();
-    }, []);
-
-    console.log(user);
     return (
       <>
         <div className="profil">
@@ -52,8 +49,9 @@ const Profil = () => {
             {user.creneau};{user.domicile};{user.nb_participantr};
           </div>
         </div>
-      </>
-    );
-  };
-};
+
+
+    </>;
+}
 export default Profil;
+
