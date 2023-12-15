@@ -7,8 +7,9 @@ import "..//EscapeDetail.css";
 
 const EscapeDetail = () => {
   const { id } = useParams();
-
   const [escp, setEscp] = useState([]);
+  const [escpdom, setEscpdom] = useState([]);
+  const [escpdetail, setEscpdetail] = useState([]);
 
   const fetchEscapesCard = async () => {
     try {
@@ -19,9 +20,6 @@ const EscapeDetail = () => {
       console.log(e);
     }
   };
-
-  const [escpdom, setEscpdom] = useState([]);
-
   const fetchEscapesCardDom = async () => {
     try {
       await Escapes.fetchEscapesCardDom().then((response) => {
@@ -31,9 +29,6 @@ const EscapeDetail = () => {
       console.log(e);
     }
   };
-
-  const [escpdetail, setEscpdetail] = useState([]);
-
   const fetchEscapesById = async () => {
     try {
       Escapes.fetchEscapesById(id).then((response) => {
@@ -44,16 +39,14 @@ const EscapeDetail = () => {
       console.log(e);
     }
   };
-
+  function refreshPage() {
+    window.location.reload(false);
+  }
   useEffect(() => {
     fetchEscapesCard();
     fetchEscapesCardDom();
     fetchEscapesById();
   }, []);
-
-  function refreshPage() {
-    window.location.reload(false);
-  }
 
   return (
     <body>
